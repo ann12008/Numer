@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Top_header from './components/Top_header'
-import { Route, HashRouter } from "react-router-dom";
+import { Route, HashRouter ,Redirect  } from "react-router-dom";
 import Bisection from './contains/Bisection';
 
 import { Row, Col } from 'antd'
@@ -13,7 +13,9 @@ class App extends React.Component {
       <div className="App">
          
         <HashRouter>
+          <Redirect exact from = '/' to = '/bisection'/>
         <Top_header />
+        
         <div >
         
           <Row >
