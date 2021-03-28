@@ -42,23 +42,56 @@ class Bisection extends React.Component {
                          </Col>
                          
                      </Row>
-                     <Row style ={{ padding : '20px 20px 0px'}}>
-                         <Col className = 'colum' span={6} >
+
+                     <Row className = 'toprow' >
+                         <Col span = {8} style = {{padding : '10px 0 0'}}>
+                             <Row className = 'inputdata'>
+                             <div>
+                                <Input className = 'input' placeholder = 'ใส่สมการ' onChange = {this.onChangeEquation}/>
+                            </div>
+                             </Row>
+                             <Row className = 'inputdata'>
+                             <div>
+                                <Input className = 'input' placeholder = 'XL = 0.00' onChange = {this.onChangeXL}/>
+                            </div>
+                             </Row>
+                             <Row className = 'inputdata'>
+                             <div>
+                                <Input className = 'input' placeholder = 'XR = 0.00' onChange = {this.onChangeXR}/>
+                            </div>
+                             </Row>
+                             <Row className = 'inputdata'>
+                             <div>
+                                <Input className = 'input' placeholder = 'error = 0.000001' onChange = {this.onChangeError} />
+                            </div>
+                             </Row>
+                             <Row className = 'inputdata'>
+                             <Col span = {24} >
+                              <Button onClick = {this.onClickCalculator}>คำนวณ</Button>
+                            </Col>
+                             </Row>
+                         </Col>
+                         <Col span = {16}>
+                         <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} />
+                         </Col>
+                     </Row>
+                     {/* <Row style ={{ padding : '20px 20px 0px'}}>
+                         <Col className = 'colum' span={3} >
                             <div>
                                 <Input className = 'input' placeholder = 'ใส่สมการ' onChange = {this.onChangeEquation}/>
                             </div>
                          </Col>
-                         <Col className = 'colum' span={6}>
+                         <Col className = 'colum' span={3}>
                             <div>
                                 <Input className = 'input' placeholder = 'XL = 0.00' onChange = {this.onChangeXL}/>
                             </div>
                          </Col>
-                         <Col className = 'colum' span={6} >
+                         <Col className = 'colum' span={3} >
                             <div>
                                 <Input className = 'input' placeholder = 'XR = 0.00' onChange = {this.onChangeXR}/>
                             </div>
                          </Col>
-                         <Col className = 'colum' span={6} >
+                         <Col className = 'colum' span={3} >
                             <div>
                                 <Input className = 'input' placeholder = 'error = 0.000001' onChange = {this.onChangeError} />
                             </div>
@@ -70,7 +103,7 @@ class Bisection extends React.Component {
                           </Col>
 
                      </Row>
-                     <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} />
+                     <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} /> */}
                          
                      
             </div>

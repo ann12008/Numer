@@ -14,14 +14,22 @@
         margin-top: 20px;
     }
 }
+.inputdata{
+    padding-top: 20px;
+}
 .arrdata td{
-    text-align: center;
+   
+    text-align: left;
     width: 355px ;
 }
 .arrdata tr th{
-    text-align: center;
+    font-size: 20px;
+    text-align: left;
     width: 359px ;
 }
-.arrdata {
-    margin-top: 50px;
+
+.toprow {
+    margin-top: 10px;
+    padding: 20px 30px 0px; 
 }
+
