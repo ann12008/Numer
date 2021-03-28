@@ -21,6 +21,7 @@ class App extends React.Component {
           <Row >
             <Col  className = 'content' span={18} offset={3}>
             <Route  path = '/bisection' component = {Bisection} />
+          
             </Col>
          
 

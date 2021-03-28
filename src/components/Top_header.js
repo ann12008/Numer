@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 const menu = (
     <Menu className='menu_rootofequation'>
 
-        <Menu.Item className = 'menu_rootofequation-item'>Bisection Method  <Link to = '/Bisection'/> </Menu.Item>
+        <Menu.Item className = 'menu_rootofequation-item'>Bisection Method  <Link to = '/bisection'/> </Menu.Item>
        
     </Menu>
 );
