@@ -2,7 +2,8 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import {Input , Button ,Table} from 'antd'
 import './Bisection.css'
-import {calBisection} from '../calculator'
+import {calBisection } from '../calculator'
+
 
 class Bisection extends React.Component {
 
@@ -75,35 +76,7 @@ class Bisection extends React.Component {
                          <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} />
                          </Col>
                      </Row>
-                     {/* <Row style ={{ padding : '20px 20px 0px'}}>
-                         <Col className = 'colum' span={3} >
-                            <div>
-                                <Input className = 'input' placeholder = 'ใส่สมการ' onChange = {this.onChangeEquation}/>
-                            </div>
-                         </Col>
-                         <Col className = 'colum' span={3}>
-                            <div>
-                                <Input className = 'input' placeholder = 'XL = 0.00' onChange = {this.onChangeXL}/>
-                            </div>
-                         </Col>
-                         <Col className = 'colum' span={3} >
-                            <div>
-                                <Input className = 'input' placeholder = 'XR = 0.00' onChange = {this.onChangeXR}/>
-                            </div>
-                         </Col>
-                         <Col className = 'colum' span={3} >
-                            <div>
-                                <Input className = 'input' placeholder = 'error = 0.000001' onChange = {this.onChangeError} />
-                            </div>
-                         </Col>
-                     </Row>
-                     <Row>
-                          <Col span = {24} >
-                              <Button onClick = {this.onClickCalculator}>คำนวณ</Button>
-                          </Col>
-
-                     </Row>
-                     <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} /> */}
+                    
                          
                      
             </div>

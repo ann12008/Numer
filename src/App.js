@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import Top_header from './components/Top_header'
-import { Route, HashRouter ,Redirect  } from "react-router-dom";
-import Bisection from './contains/Bisection';
-
+import { Route, HashRouter ,Redirect  } from "react-router-dom"
+import Bisection from './contains/Bisection'
+import Fasle_Position from './contains/False_Position'
+import One_Point from './contains/One_Point'
 import { Row, Col } from 'antd'
 
 class App extends React.Component {
@@ -21,6 +22,8 @@ class App extends React.Component {
           <Row >
             <Col  className = 'content' span={18} offset={3}>
             <Route  path = '/bisection' component = {Bisection} />
+            <Route path = '/false-position' component = {Fasle_Position}/>
+            <Route path = '/one-point' component = {One_Point}/>
           
             </Col>
          

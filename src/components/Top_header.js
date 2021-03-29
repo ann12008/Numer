@@ -7,10 +7,12 @@ import {Link} from 'react-router-dom'
 const menu = (
     <Menu className='menu_rootofequation'>
 
-        <Menu.Item className = 'menu_rootofequation-item'>Bisection Method  <Link to = '/bisection'/> </Menu.Item>
-       
+        <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/bisection' >Bisection Method </Link> </Menu.Item>
+        <Menu.Item className = 'menu_rootofequation-item'><Link to = '/false-position' >False-Position Method </Link> </Menu.Item>
+        <Menu.Item className = 'menu_rootofequation-item'><Link to = '/one-point' >One-Point Iteration Method </Link> </Menu.Item>
+        
     </Menu>
-);
+)
 
 class Top_header extends React.Component {
     render() {
@@ -30,10 +32,7 @@ class Top_header extends React.Component {
                             </a>
                         </Dropdown>
                     </Col>
-                    <Col span={12}>
-
-
-                    </Col>
+                   
                     <Col span={12}>
 
 

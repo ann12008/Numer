@@ -1,20 +1,26 @@
-const math = require('mathjs');
+import { bignumber } from 'mathjs';
 
+const math = require('mathjs');
+function checkEquation (equation){
+    equation = equation.replaceAll('X','x')
+
+    return equation
+}
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
-    
-    let equation = math.parse(initialEquation).compile()
+    let equation = checkEquation(initialEquation)
+        equation = math.parse(equation).compile()
     let  xl = math.bignumber(initialXL)
     let xr = math.bignumber(initialXR)
     let error = math.bignumber(initialError)
 
 
     let arr = []
-    console.log('aaa')
+
 
     let xm = math.divide(math.add(xl,xr),2)
 
     let fx = math.multiply(equation.evaluate({x :xm}),equation.evaluate({x :xr}))
-    
+
     if(fx < 0){
         xl = xm;
     }
@@ -43,11 +49,66 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
         oldXm = xm;
 
-        // console.log(xm.toString());
-        arr.push({key : i , iteration : i.toString() ,xm : xm.toString() ,error : checkError.toString()})
+      
+        arr.push({key : i , iteration : i.toString() ,xm : xm.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
         
         i++;
     
     }
     return(arr);
+}
+
+export function calFalse(initialEquation ,initialXL,initialXR,initialError){
+
+    let equation = checkEquation(initialEquation)
+
+     equation = math.parse(equation).compile()
+
+     let xl = math.bignumber(initialXL)
+     let xr = math.bignumber(initialXR)
+     let error = math.bignumber(initialError)
+     
+     let arr = []
+
+     let i = 1;
+     
+     
+     let oldX1 = 0;
+
+     let checkError = 9999
+
+     while(checkError > error){
+
+        // console.log('first  '+i)
+        let fXL  = equation.evaluate({x : xl})
+
+        let fXR  = equation.evaluate({x : xr})
+        
+        let x1 = math.divide(math.subtract(math.multiply(xl , fXR) , math.multiply(xr , fXL)) , math.subtract(fXR , fXL))
+
+        
+        // console.log('middle   ' + i)
+        let fx1 = equation.evaluate({x : x1})
+
+        let check = math.multiply(fXL,fXR)
+       
+        if( check >= 0){
+            xr = x1
+        }
+        else{
+            xl =x1
+        }
+
+        checkError =  math.abs((x1 - oldX1)/x1);
+
+        oldX1 = x1
+
+        arr.push({key : i , iteration : i.toString() ,x1 : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
+        console.log(i.toString())
+        console.log(x1.toString())
+        console.log(checkError.toString())
+        i++
+        
+     }
+     return arr
 }

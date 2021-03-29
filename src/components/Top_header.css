@@ -26,13 +26,13 @@
      
    
 }
-.menu_rootofequation{
+.menu_rootofequation Link{
     background-color: rgb(0, 0, 0);
     color: white;
     
 } 
 .menu_rootofequation :hover{
-    background-color: rgb(255, 251, 0);
+    background-color: rgb(140, 204, 207);
     
 } 
 
