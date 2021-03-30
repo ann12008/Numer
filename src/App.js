@@ -5,6 +5,7 @@ import { Route, HashRouter ,Redirect  } from "react-router-dom"
 import Bisection from './contains/Bisection'
 import Fasle_Position from './contains/False_Position'
 import One_Point from './contains/One_Point'
+import Newton_Raphson from './contains/Newton_Raphson'
 import { Row, Col } from 'antd'
 
 class App extends React.Component {
@@ -24,7 +25,7 @@ class App extends React.Component {
             <Route  path = '/bisection' component = {Bisection} />
             <Route path = '/false-position' component = {Fasle_Position}/>
             <Route path = '/one-point' component = {One_Point}/>
-          
+             <Route path = 'newton-raphson' component = {Newton_Raphson}/>
             </Col>
          
 

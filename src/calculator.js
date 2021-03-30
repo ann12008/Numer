@@ -1,4 +1,4 @@
-import { bignumber } from 'mathjs';
+import { bignumber, identity } from 'mathjs';
 
 const math = require('mathjs');
 function checkEquation (equation){
@@ -106,6 +106,50 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
         arr.push({key : i , iteration : i.toString() ,x1 : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
         console.log(i.toString())
         console.log(x1.toString())
+        console.log(checkError.toString())
+        i++
+        
+     }
+     return arr
+}
+
+export function calOnepoint(initialEquation ,initialX,initialError){
+
+    let equation = checkEquation(initialEquation)
+
+     equation = math.parse(equation).compile()
+     
+     let X = math.bignumber(initialX)
+     console.log('aaa')
+     let error = math.bignumber(initialError)
+     
+     let arr = []
+
+     let i = 1;
+     
+     
+     let oldX = 0;
+
+     let checkError = 9999
+     let oldcheckError = 9999;
+     while(checkError > error){
+
+        
+         X  = equation.evaluate({x : X})
+
+         checkError =  math.abs((X - oldX)/X);
+         if(checkError > oldcheckError){
+            arr.push({key : i , iteration : "ลู่ออก" ,x : "ลู่ออก" ,error : "ลู่ออก"})
+            break;
+        }
+          oldcheckError = checkError;
+        
+         oldX = X
+         
+       
+        arr.push({key : i , iteration : i.toString() ,x : X.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
+        console.log(i.toString())
+        console.log(X.toString())
         console.log(checkError.toString())
         i++
         
