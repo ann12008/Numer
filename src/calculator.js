@@ -90,7 +90,7 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
         // console.log('middle   ' + i)
         let fx1 = equation.evaluate({x : x1})
 
-        let check = math.multiply(fXL,fXR)
+        let check = math.multiply(fx1,fXR)
        
         if( check >= 0){
             xr = x1
@@ -155,4 +155,111 @@ export function calOnepoint(initialEquation ,initialX,initialError){
         
      }
      return arr
+}
+
+
+export function calNewton(initialEquation, initialX, initialError) {
+
+    let equation = checkEquation(initialEquation)
+
+    equation = math.parse(equation)
+    let X = math.bignumber(initialX)
+
+    let fXprime = math.derivative(equation,'x').compile()
+    
+    // console.log('aaa')
+    let error = math.bignumber(initialError)
+
+    
+
+    let arr = []
+
+    let i = 1;
+
+
+    let oldX = X;
+
+    let checkError = 9999
+    let oldcheckError = 9999;
+    while (checkError > error) {
+
+        let fXdiff = fXprime.evaluate({x : X})
+        let fX = equation.evaluate({ x: X })
+        X = math.subtract(X, math.divide(fX, fXdiff))
+
+
+
+        checkError = math.abs((X - oldX) / X);
+        if (checkError > oldcheckError) {
+            arr.push({ key: i, iteration: "ลู่ออก", x: "ลู่ออก", error: "ลู่ออก" })
+            break;
+        }
+        oldcheckError = checkError;
+
+        oldX = X
+
+
+        arr.push({key : i, iteration: i.toString(), x: X.toFixed(15).toString(), error: checkError.toFixed(15).toString() })
+        console.log(i.toString())
+        console.log(X.toString())
+        console.log(checkError.toString())
+        i++
+
+    }
+    return arr
+}
+export function calSecant(initialEquation, initialX0,initialX1, initialError) {
+
+    let equation = checkEquation(initialEquation)
+
+    equation = math.parse(equation).compile()
+    let x0 = math.bignumber(initialX0)
+    let x1 = math.bignumber(initialX1)
+
+
+   let fx0 = equation.evaluate({x:x0})
+   let fx1 = equation.evaluate({x:x1})
+    
+    // console.log('aaa')
+    let error = math.bignumber(initialError)
+
+    
+
+    let arr = []
+
+    let i = 1;
+
+
+    let oldX = 0;
+
+    let checkError = 9999
+    let oldcheckError = 9999;
+    while (checkError > error) {
+
+    let    x = math.subtract(x1 , math.divide(math.multiply(fx1,math.subtract(x0 , x1) ), math.subtract(fx0 , fx1)));
+            
+            checkError = Math.abs((x - x1)/x);
+            
+            fx0 = fx1;
+            x0 = x1;
+            x1 = x;
+            fx1 = equation.evaluate({x : x1})
+
+
+       
+        if (checkError > oldcheckError) {
+            arr.push({ key: i, iteration: "ลู่ออก", x: "ลู่ออก", error: "ลู่ออก" })
+            break;
+        }
+        oldcheckError = checkError;
+
+        oldX = x
+
+
+        arr.push({key : i, iteration: i.toString(), x: x.toFixed(15).toString(), error: checkError.toFixed(15).toString() })
+      
+        i++
+
+    }
+    return arr
 }

@@ -2,16 +2,20 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import {Input , Button ,Table} from 'antd'
 import './Bisection.css'
-import {calNewton} from '../calculator'
+import {calSecant} from '../calculator'
 
-class Newton_Raphson extends React.Component{
-    state = {equation : '' , x : '',error : '',colum :[{title : 'Iteration',dataIndex : 'iteration'},{title : 'X',dataIndex : 'x'},{title : 'Error',dataIndex : 'error'}],data : []}
+
+export default class Secant extends React.Component{
+    state = {equation : '' , x0 : '',x1 :'',error : '',colum :[{title : 'Iteration',dataIndex : 'iteration'},{title : 'X',dataIndex : 'x'},{title : 'Error',dataIndex : 'error'}],data : []}
         
     onChangeEquation = e =>{
         this.setState({equation : e.target.value})
     }
-    onChangeX = e =>{
-        this.setState({x : e.target.value})
+    onChangeX0 = e =>{
+        this.setState({x0 : e.target.value})
+    }
+    onChangeX1 = e =>{
+        this.setState({x1 : e.target.value})
     }
     
     onChangeError = e =>{
@@ -21,14 +25,14 @@ class Newton_Raphson extends React.Component{
     onClickCalculator = e =>{
 
         
-        this.setState({data : calNewton(this.state.equation ,this.state.x ,this.state.error)})
+        this.setState({data : calSecant(this.state.equation ,this.state.x0 ,this.state.x1,this.state.error)})
     }
-        render(){
-            return(
+    render(){
+        return(
             <div>
-                   <Row>
+                 <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
-                              Newton-Raphson Method
+                              Secant Method
                          </Col>
                          
                      </Row>
@@ -42,8 +46,13 @@ class Newton_Raphson extends React.Component{
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'X = 0.00' onChange = {this.onChangeX}/>
+                                <Input className = 'input' placeholder = 'X0 = 0.00' onChange = {this.onChangeX0}/>
                             </div>
+                             </Row>
+                             <Row className = 'inputdata'>
+                                 <div>
+                                     <Input className = 'input' placeholder = 'X1 = 0.00' onChange = {this.onChangeX1} />
+                                 </div>
                              </Row>
                            
                              <Row className = 'inputdata'>
@@ -59,12 +68,12 @@ class Newton_Raphson extends React.Component{
                          </Col>
                          <Col span = {16}>
                              
-                         <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} />
+                          <Table className = 'arrdata' columns = {this.state.colum} dataSource = {this.state.data} /> 
                          </Col>
                      </Row>         
             </div>
-            )
-        }
+        )
+    }
+
 }
 
-export default Newton_Raphson

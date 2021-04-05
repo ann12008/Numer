@@ -11,6 +11,7 @@ const menu = (
         <Menu.Item className = 'menu_rootofequation-item'><Link to = '/false-position' >False-Position Method </Link> </Menu.Item>
         <Menu.Item className = 'menu_rootofequation-item'><Link to = '/one-point' >One-Point Iteration Method </Link> </Menu.Item>
         <Menu.Item className = 'menu_rootofequation-item'><Link to = '/newton-raphson' >Newton-Raphson Method </Link> </Menu.Item>
+        <Menu.Item className = 'menu_rootofequation-item'><Link to = '/secant' >Secant Method </Link> </Menu.Item>
         
     </Menu>
 )
