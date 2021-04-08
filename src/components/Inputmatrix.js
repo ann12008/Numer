@@ -8,7 +8,7 @@ export default class Inputmatrix extends React.Component{
         for(let i = 0 ; i < this.props.n ; i++){
             let arrCol = []
             for(let j = 0 ;  j < this.props.n ; j++){
-                arrCol.push(<Col className = 'colInput'>  <Input style = {{width : '60px'}}  name = {i.toString()+' '+j.toString()} placeholder = '' onChange = {this.props.onChange} />  </Col>)
+                arrCol.push(<Col className = 'colInput'>  <Input style = {{width : '60px'}}  name = {i.toString()+' '+j.toString()} placeholder = '' onChange = {this.props.onChange} autoComplete = 'off'/>  </Col>)
                 
             }
             arrRow.push(<Row className = 'rowInput'>{arrCol}</Row>)

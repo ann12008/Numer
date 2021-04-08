@@ -7,16 +7,16 @@ export default class InputB extends React.Component{
         for(let i = 0 ; i < this.props.n ; i++){
            
             for(let j = 0 ;  j < 1 ; j++){
-                arrCol.push(<Row className = 'colInput'>  <Input style = {{width : '60px'}}  name = {i.toString()} placeholder = '' onChange = {this.props.onChange} />  </Row>)
+                arrCol.push(<Row className = 'colInput'>  <Input style = {{width : '60px'}}  name = {'b'+' '+i.toString()} placeholder = '' onChange = {this.props.onChange} autoComplete = 'off'/>  </Row>)
                 
             }
            
             
             
         } 
-        console.log(arrCol)
+        
         return arrCol
-    }
+    } 
     render(){
         return(
             <div>

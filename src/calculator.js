@@ -1,10 +1,19 @@
-import { bignumber, identity } from 'mathjs';
+import { bignumber, identity, matrix } from 'mathjs';
 
 const math = require('mathjs');
 function checkEquation (equation){
     equation = equation.replaceAll('X','x')
 
     return equation
+}
+function copyArray(n,matrix1){
+   let arr = []
+    for(let i = 0;i < n ; i++){
+        arr.push([])
+        arr[i] = [].concat(matrix1[i])
+    }
+    return arr;
+
 }
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
     let equation = checkEquation(initialEquation)
@@ -261,5 +270,35 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
         i++
 
     }
+    return arr
+}
+
+export function calCramer(n, initialMatrix1, initialMatrix2) {
+
+    let matrix1=math.bignumber(initialMatrix1)
+    let matrix2=math.bignumber(initialMatrix2)
+    let det_matrixA = math.det(matrix1)
+    
+    let temp_matrix1 = copyArray(n,matrix1)
+
+    let arr = []
+
+    let X = [];
+    
+    
+
+
+        for (let i = 0; i < n; i++) { 
+
+            for (let j = 0; j < n; j++) { 
+                temp_matrix1[j][i] = matrix2[j]  
+            }
+            X[i] = math.divide(math.det(temp_matrix1) , det_matrixA).toFixed(15).toString()
+            
+            arr.push({key : i , x : 'X'+(i+1) ,valuex : X[i]})
+            
+            temp_matrix1 = copyArray(n,matrix1);
+        }
+        
     return arr
 }

@@ -5,31 +5,45 @@ import './matrix.css'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
 import { matrix } from 'mathjs'
+import { calCramer } from '../calculator'
+const math = require('mathjs');
 
 export default class Cramer_rule extends React.Component{
 
-    state = {n : 2, matrix : [[],[],[],[],[],[]],matrixB :[] }
+    state = {n : 2, matrixA : [[],[]],matrixB :[] , colum : [{title : 'X', dataIndex : 'x'},{title : 'valueX' ,dataIndex : 'valuex'}] ,data : []}
 
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
-        this.state.matrix[parseInt(index[0])][parseInt(index[1])] = e.target.value
+        let value = e.target.value 
+        this.state.matrixA[parseInt(index[0])][parseInt(index[1])] = value
     
     }
     onChangematrixB = (e) =>{
-        let index = e.target.name
-        this.state.matrixB[parseInt(index[0])] = e.target.value
-        console.log(this.state.matrixB[0])
-        console.log(this.state.matrixB[1])
+        let index = e.target.name.split(" ")
+        let value = e.target.value
+        this.state.matrixB[parseInt(index[1])] = value
+        // console.log(this.state.matrixB[0])
+        // console.log(this.state.matrixB[1])
     
     }
     onClickmatrixadd = (e)=>{
         if(this.state.n < 6){
             this.setState({n : this.state.n+=1})
+            this.state.matrixA.push([])
         }
     }
     onClickmatrixsubtract = (e)=>{
         if(this.state.n > 2){
             this.setState({n : this.state.n-=1})
+            this.state.matrixA.pop([])
+        }
+    }
+    onClickCalculator = (e)=>{
+        try{
+            this.setState({data : calCramer(this.state.n,this.state.matrixA,this.state.matrixB)})
+        }
+        catch(error){
+            
         }
     }
 
@@ -53,13 +67,21 @@ export default class Cramer_rule extends React.Component{
                     </Row>
 
                 </Row>
-                <Row className = 'titlematrix'>
-                    <Col span = {10}> Matrix A </Col>
-                    <Col span = {14}> Matrix B </Col>
+                <Row className='titlematrix'>
+                    <Col span={10}> Matrix A </Col>
+                    <Col span={14}> Matrix B </Col>
                 </Row>
                 <Row className='matrix'>
-                    <Col span = {10}> <Inputmatrix n={this.state.n} onChange={this.onChangematrixA} /> </Col>
-                   <Col span = {14}><InputB n={this.state.n} onChange={this.onChangematrixB} /> </Col>
+                    <Col span={10}> <Inputmatrix n={this.state.n} onChange={this.onChangematrixA} /> </Col>
+                    <Col span={14}><InputB n={this.state.n} onChange={this.onChangematrixB} /> </Col>
+                </Row>
+                <Row className='matrix'>
+                    <Button onClick={this.onClickCalculator}>คำนวณ</Button>
+                </Row>
+                <Row >
+                    <Col span={16}>
+                        <Table className='showdata' columns={this.state.colum} dataSource={this.state.data} />
+                    </Col>
                 </Row>
             </div>
         )
