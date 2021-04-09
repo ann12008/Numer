@@ -147,10 +147,10 @@ export function calOnepoint(initialEquation ,initialX,initialError){
          X  = equation.evaluate({x : X})
 
          checkError =  math.abs((X - oldX)/X);
-         if(checkError > oldcheckError){
-            arr.push({key : i , iteration : "ลู่ออก" ,x : "ลู่ออก" ,error : "ลู่ออก"})
-            break;
-        }
+          if(checkError > oldcheckError && i > 3){
+           arr.push({key : i , iteration : "ลู่ออก" ,x : "ลู่ออก" ,error : "ลู่ออก"})
+             break;
+         }
           oldcheckError = checkError;
         
          oldX = X
@@ -299,6 +299,113 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
             
             temp_matrix1 = copyArray(n,matrix1);
         }
+        
+    return arr
+}
+
+
+
+export function calElimination(n, initialMatrix1, initialMatrix2) {
+
+    let matrix1=initialMatrix1
+    let matrix2=initialMatrix2
+    
+    
+    
+    let arr = []
+    let X = []
+    
+    for(let i = 0 ; i < n ; i++){
+        matrix1[i].push(matrix2[i]) 
+        X.push(1)
+    }
+    console.log(matrix1)
+   
+    for(let i = 1;i < n ; i++){
+        for(let j = i ;j < n ; j++){
+
+            let divide = matrix1[i-1][i-1]
+            let multi = matrix1[j][i-1]
+
+            for(let k = i-1 ; k < n+1;k++){
+                matrix1[j][k] = matrix1[j][k] - ((matrix1[i-1][k]/divide)*multi)
+                
+            }
+    
+        }
+         
+    }
+
+    for(let i = n-1 ;i >= 0 ; i--){
+        let sum = 0;
+        for(let j = 0 ; j < n ;j++){
+            sum = sum + matrix1[i][j]*X[j];
+        }
+        sum = sum - matrix1[i][i]
+        X[i] = ((matrix1[i][n] - sum)/matrix1[i][i])
+        
+    }
+    X.map((x,i) => arr.push({key : i , x : 'X'+(i+1) , valuex : x.toFixed(5)}))
+
+        
+    return arr
+}
+
+
+export function calJordan(n, initialMatrix1, initialMatrix2) {
+
+    let matrix1=initialMatrix1
+    let matrix2=initialMatrix2
+    
+    
+    
+    let arr = []
+    let X = []
+    
+    for(let i = 0 ; i < n ; i++){
+        matrix1[i].push(matrix2[i]) 
+        X.push(1)
+    }
+    console.log(matrix1)
+   
+    for(let i = 1;i < n ; i++){
+        for(let j = i ;j < n ; j++){
+
+            let divide = matrix1[i-1][i-1]
+            let multi = matrix1[j][i-1]
+
+            for(let k = i-1 ; k < n+1;k++){
+                matrix1[j][k] = matrix1[j][k] - ((matrix1[i-1][k]/divide)*multi)
+              
+            }
+    
+        }
+         
+    }
+    for(let i = n-2;i >= 0 ; i--){
+        for(let j = i ;j >= 0 ; j--){
+
+            let divide = matrix1[i+1][i+1]
+            let multi = matrix1[j][i+1]
+
+            for(let k = n ; k >= i;k--){
+                matrix1[j][k] = matrix1[j][k] - ((matrix1[i+1][k]/divide)*multi)
+              
+            }
+    
+        }
+         
+    }
+
+    for(let i = 0 ;i < n ; i++){
+        X[i] = ((matrix1[i][n] )/matrix1[i][i])
+    }
+       
+      
+        
+    
+    X.map((x,i) => arr.push({key : i , x : 'X'+(i+1) , valuex : x.toFixed(5)}))
+
         
     return arr
 }

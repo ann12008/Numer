@@ -21,6 +21,8 @@ const matrix =(
     <Menu className='menu_Topic'>
 
     <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/cramer' >Cramer's Rule </Link> </Menu.Item>
+    <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/gauss-elimination' >Gauss Elimination Method</Link> </Menu.Item>
+    <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/gauss-jordan' >Gauss-Jordan Method</Link> </Menu.Item>
     {/* <Menu.Item className = 'menu_rootofequation-item'><Link to = '/false-position' >False-Position Method </Link> </Menu.Item>
     <Menu.Item className = 'menu_rootofequation-item'><Link to = '/one-point' >One-Point Iteration Method </Link> </Menu.Item>
     <Menu.Item className = 'menu_rootofequation-item'><Link to = '/newton-raphson' >Newton-Raphson Method </Link> </Menu.Item>

@@ -5,13 +5,12 @@ import './matrix.css'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
 
-import { calCramer } from '../calculator'
+import { calElimination } from '../calculator'
 const math = require('mathjs');
 
-export default class Cramer_rule extends React.Component{
+export default class Gauss_Elimination extends React.Component{
 
     state = {n : 2, matrixA : [[],[]],matrixB :[] , colum : [{title : 'X', dataIndex : 'x'},{title : 'valueX' ,dataIndex : 'valuex'}] ,data : []}
-
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value 
@@ -39,22 +38,22 @@ export default class Cramer_rule extends React.Component{
         }
     }
     onClickCalculator = (e)=>{
-        try{
-            this.setState({data : calCramer(this.state.n,this.state.matrixA,this.state.matrixB)})
-        }
-        catch(error){
+       try{
+        this.setState({data : calElimination(this.state.n,this.state.matrixA,this.state.matrixB)})
+       }
+       catch(error){
+           
+       }
             
-        }
+           
+       
     }
-
-    
-    
     render(){
         return(
             <div>
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                        Cramer's Rule
+                        Gauss Elimination Method
                          </Col>
                     <Row className='rowButtonmatrix'>
                         <Col className='buttonmatrix'>

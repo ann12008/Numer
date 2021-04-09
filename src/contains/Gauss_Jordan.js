@@ -5,13 +5,12 @@ import './matrix.css'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
 
-import { calCramer } from '../calculator'
+import { calJordan } from '../calculator'
 const math = require('mathjs');
 
-export default class Cramer_rule extends React.Component{
+export default class Gauss_Jordan extends React.Component{
 
     state = {n : 2, matrixA : [[],[]],matrixB :[] , colum : [{title : 'X', dataIndex : 'x'},{title : 'valueX' ,dataIndex : 'valuex'}] ,data : []}
-
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value 
@@ -40,21 +39,21 @@ export default class Cramer_rule extends React.Component{
     }
     onClickCalculator = (e)=>{
         try{
-            this.setState({data : calCramer(this.state.n,this.state.matrixA,this.state.matrixB)})
+            this.setState({data : calJordan(this.state.n,this.state.matrixA,this.state.matrixB)})
         }
         catch(error){
             
         }
+            
+           
+       
     }
-
-    
-    
     render(){
         return(
             <div>
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                        Cramer's Rule
+                        Gauss-Jordan Method
                          </Col>
                     <Row className='rowButtonmatrix'>
                         <Col className='buttonmatrix'>
