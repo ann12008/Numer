@@ -10,7 +10,15 @@ import Cramer_rule from './contains/Cramer_rule'
 import Secant from './contains/Secant'
 import Gauss_Elimination from './contains/Gauss_elimination'
 import Gauss_Jordan from './contains/Gauss_Jordan'
+import Lu_Decomposition from './contains/Lu_Decomposition';
+import Jacobi from './contains/Jacobi';
+import Guass_seidel from './contains/Gauss_Seidel';
+import Conjugate from './contains/Conjugate';
+import Newton from './contains/Newton';
+import Lagrange from './contains/Lagrange';
+import Spline from './contains/Spline';
 import { Row, Col } from 'antd'
+
 
 class App extends React.Component {
 
@@ -34,6 +42,13 @@ class App extends React.Component {
              <Route path = '/cramer' component = {Cramer_rule}/>
              <Route path = '/gauss-elimination' component = {Gauss_Elimination}/>
              <Route path = '/gauss-jordan' component = {Gauss_Jordan}/>
+             <Route path = '/lu-decomposition' component = {Lu_Decomposition}/>
+             <Route path = '/jacobi' component = {Jacobi}/>
+             <Route path = '/gauss-seidel' component = {Guass_seidel}/>
+             <Route path = '/conjugate' component = {Conjugate}/>
+             <Route path = '/newton' component = {Newton}/>
+             <Route path = '/lagrange' component = {Lagrange}/>
+             <Route path = '/spline' component = {Spline}/>
             </Col>
          
 
