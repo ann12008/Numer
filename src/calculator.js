@@ -1,5 +1,5 @@
 import { bignumber, e, identity, matrix } from 'mathjs';
-
+var interpolationQuadratic_Poly_linear = require('interpolating-polynomial')
 const math = require('mathjs');
 function checkEquation (equation){
     equation = equation.replaceAll('X','x')
@@ -743,4 +743,31 @@ export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
         
     return arr
 }
+}
+
+export function calNewtonInterpolation( n,initialMatrix1, initialPoint,initialX) {
+    let A = initialMatrix1
+
+    let P = initialPoint
+   
+    let X = initialX
+
+    
+
+    let arr = []
+    let ans = []
+
+   
+   for(let i = 0 ; i < P.length ; i++){
+           arr.push(A[parseInt(P[i])-1])
+   }
+  
+   console.log(arr.toString())
+   let findX = interpolationQuadratic_Poly_linear(arr)
+
+   
+
+    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : findX(X) })
+
+   return ans
 }
