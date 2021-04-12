@@ -3,7 +3,7 @@ import { Row, Col } from 'antd'
 import {Input , Button ,Table} from 'antd'
 import './matrix.css'
 import InputXY  from '../components/InputXY'
-import { e } from 'mathjs'
+
 import {calNewtonInterpolation} from '../calculator'
 
 const math = require('mathjs');
@@ -47,7 +47,7 @@ export default class Newton extends React.Component{
     }
     onClickCalculator = (e)=>{
         
-        this.setState({data : calNewtonInterpolation(this.state.n,this.state.matrixA,this.state.Point,this.state.valueX)})
+        this.setState({data : calNewtonInterpolation(this.state.matrixA,this.state.Point,this.state.valueX)})
         
         
        
