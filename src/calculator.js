@@ -1,5 +1,6 @@
 import { bignumber, e, identity, matrix } from 'mathjs';
 var interpolationQuadratic_Poly_linear = require('interpolating-polynomial')
+const Spline = require('cubic-spline');
 const math = require('mathjs');
 function checkEquation (equation){
     equation = equation.replaceAll('X','x')
@@ -847,6 +848,51 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 
 
     ans.push({key :  1 ,fx : 'f('+X+')' , valuex : (b/c).toFixed(5) })
+	
+
+    return ans
+
+}
+
+export function calSpline(initialMatrix1,initialX){
+    
+
+    let arr = initialMatrix1
+
+   
+   
+    let X = initialX
+
+    
+
+    
+    let ans = []
+
+  
+
+   //-----------------------------------------------------------//
+   let xs = []
+   let ys = []
+
+
+
+	for(let i = 0 ; i < arr.length ; i++){
+
+		for(let j = 0 ; j < arr.length ; j++){
+				if(j == 0){
+					xs.push(arr[i][j])
+				}
+				else if(j == 1){
+					ys.push(arr[i][j])
+				}
+		}
+			
+	}
+
+    const spline = new Spline(xs,ys)
+    
+
+    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : spline.at(X) })
 	
 
     return ans
