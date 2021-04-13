@@ -17,6 +17,9 @@ import Conjugate from './contains/Conjugate';
 import Newton from './contains/Newton';
 import Lagrange from './contains/Lagrange';
 import Spline from './contains/Spline';
+import linear_regression from './contains/linear_regression';
+import polynomial_regression from './contains/Polynomial_regression';
+import Multi_linear_regression from './contains/Multi_linear_regression';
 import { Row, Col } from 'antd'
 
 
@@ -49,6 +52,9 @@ class App extends React.Component {
              <Route path = '/newton' component = {Newton}/>
              <Route path = '/lagrange' component = {Lagrange}/>
              <Route path = '/spline' component = {Spline}/>
+             <Route path = '/linear-regression' component = {linear_regression}/>
+             <Route path = '/polynomial-regression' component = {polynomial_regression}/>
+             <Route path = '/multiple-linear-regression' component = {Multi_linear_regression}/>
             </Col>
          
 

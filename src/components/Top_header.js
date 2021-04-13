@@ -43,6 +43,18 @@ const Interpolation =(
 </Menu>
 )
 
+const Regression =(
+    <Menu className='menu_Topic'>
+
+    <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/linear-regression' >Linear Regression </Link> </Menu.Item>
+    <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/polynomial-regression' >polynomial Regression </Link> </Menu.Item>
+    
+    <Menu.Item className = 'menu_rootofequation-item'> <Link to = '/multiple-linear-regression' >Multiple Linear Regression </Link> </Menu.Item>
+    
+    
+</Menu>
+)
+
 class Top_header extends React.Component {
     render() {
         return (
@@ -50,35 +62,43 @@ class Top_header extends React.Component {
                 <Row className='menu'>
 
                     <Col className='logo' span={4}>
-                        Numer
+                        NUMER
                     </Col>
 
                     <Col className='topic' span={5}>
 
                         <Dropdown overlay={rootofequation}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                Root of Equations <DownOutlined />
+                                ROOT OF EQUATIONS <DownOutlined />
                             </a>
                         </Dropdown>
                     </Col>
-                   
+
                     <Col className='topic' span={5}>
 
-                    <Dropdown overlay={matrix}>
+                        <Dropdown overlay={matrix}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                Matrix <DownOutlined />
+                                MATRIX <DownOutlined />
                             </a>
                         </Dropdown>
                     </Col>
 
                     <Col className='topic' span={5}>
 
-                    <Dropdown overlay={Interpolation}>
-                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                               Interpolation <DownOutlined />
+                        <Dropdown overlay={Interpolation}>
+                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                INTERPOLATION <DownOutlined />
                             </a>
-    </Dropdown>
-</Col>
+                        </Dropdown>
+                    </Col>
+                    <Col className='topic' span={5}>
+
+                        <Dropdown overlay={Regression}>
+                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                LEAST-SQUARES REGRESSION <DownOutlined />
+                            </a>
+                        </Dropdown>
+                    </Col>
                 </Row>
             </div>
         )
