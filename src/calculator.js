@@ -149,7 +149,8 @@ export function calOnepoint(initialEquation ,initialX,initialError){
          X  = equation.evaluate({x : X})
 
          checkError =  math.abs((X - oldX)/X);
-          if(checkError > oldcheckError && i > 3){
+          if(checkError >= oldcheckError && i > 3){
+              arr = []
            arr.push({key : i , iteration : "ลู่ออก" ,x : "ลู่ออก" ,error : "ลู่ออก"})
              break;
          }
