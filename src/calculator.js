@@ -339,17 +339,17 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
          
     }
 
-    for(let i = n-1 ;i >= 0 ; i--){
+   for(let i = n-1 ;i >= 0 ; i--){
         let sum = 0;
         for(let j = 0 ; j < n ;j++){
             sum = sum + matrix1[i][j]*X[j];
         }
         sum = sum - matrix1[i][i]
-        X[i] = ((matrix1[i][n] - sum)/matrix1[i][i])
-        
+    X[i] = ((matrix1[i][n] - sum)/matrix1[i][i])
+       
     }
     X.map((x,i) => arr.push({key : i , x : 'X'+(i+1) , valuex : x.toFixed(5)}))
-
+    
         
     return arr
 }
