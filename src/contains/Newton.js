@@ -73,7 +73,7 @@ export default class Newton extends React.Component{
 
                 </Row>
                 <Row className='titlematrix'>
-                    <Col span={10}> Matrix A </Col>
+                    <Col span={10}> จุด X , Y </Col>
                     
                 </Row>
                 <Row className='matrix'>
