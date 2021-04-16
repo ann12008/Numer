@@ -13,7 +13,7 @@ class Bisection extends React.Component {
          xl : '' ,
          xr : '' , 
          error : '' , 
-         status : null, 
+        
          colum : [
              {title : 'Iteration', dataIndex : 'iteration'},
              {title : 'Xm', dataIndex : 'xm'},
@@ -38,7 +38,7 @@ class Bisection extends React.Component {
          let index = e.currentTarget.getAttribute('name').split('_')
                 index = parseInt(index[1])
                 this.setState({
-                    fx: this.state.apiData[index]["equation"],
+                    equation: this.state.apiData[index]["equation"],
                     xl : this.state.apiData[index]["xl"],
                     xr : this.state.apiData[index]["xr"],
                     error : this.state.apiData[index]["error"],
@@ -118,22 +118,22 @@ class Bisection extends React.Component {
                          <Col span = {8} style = {{padding : '10px 0 0'}}>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'ใส่สมการ' onChange = {this.onChangeEquation}/>
+                                <Input className = 'input' placeholder = 'ใส่สมการ' value = {this.state.equation} onChange = {this.onChangeEquation}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'XL = 0.00' onChange = {this.onChangeXL}/>
+                                <Input className = 'input' placeholder = 'XL = 0.00' value = {this.state.xl} onChange = {this.onChangeXL}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'XR = 0.00' onChange = {this.onChangeXR}/>
+                                <Input className = 'input' placeholder = 'XR = 0.00'value = {this.state.xr} onChange = {this.onChangeXR}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'error = 0.000001' onChange = {this.onChangeError} />
+                                <Input className = 'input' placeholder = 'error = 0.000001' value = {this.state.error} onChange = {this.onChangeError} />
                             </div>
                              </Row>
                              <Row className = 'inputdata'>

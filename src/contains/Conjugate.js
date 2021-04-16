@@ -4,7 +4,7 @@ import {Input , Button ,Table} from 'antd'
 import './matrix.css'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
-
+import apis from '../API/index'
 import { calConjugate } from '../calculator'
 
 const math = require('mathjs');
