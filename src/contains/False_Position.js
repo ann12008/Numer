@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import {Input , Button ,Table,Modal} from 'antd'
 import apis from '../API/index'
-import './Bisection.css'
+import './root_of_equation.css'
 import {calFalse} from '../calculator'
 
 class False_Position extends React.Component {
@@ -116,22 +116,22 @@ class False_Position extends React.Component {
                          <Col span = {8} style = {{padding : '10px 0 0'}}>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'ใส่สมการ' onChange = {this.onChangeEquation}/>
+                                <Input className = 'input' placeholder = 'ใส่สมการ' value = {this.state.equation} onChange = {this.onChangeEquation}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'XL = 0.00' onChange = {this.onChangeXL}/>
+                                <Input className = 'input' placeholder = 'XL = 0.00'value = {this.state.xl} onChange = {this.onChangeXL}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'XR = 0.00' onChange = {this.onChangeXR}/>
+                                <Input className = 'input' placeholder = 'XR = 0.00' value = {this.state.xr}onChange = {this.onChangeXR}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'error = 0.000001' onChange = {this.onChangeError} />
+                                <Input className = 'input' placeholder = 'error = 0.000001'value = {this.state.error} onChange = {this.onChangeError} />
                             </div>
                              </Row>
                              <Row className = 'inputdata'>

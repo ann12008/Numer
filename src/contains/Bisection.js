@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import {Input , Button ,Table,Modal} from 'antd'
 import apis from '../API/index'
-import './Bisection.css'
+import './root_of_equation.css'
 import { calBisection } from '../calculator'
 
 

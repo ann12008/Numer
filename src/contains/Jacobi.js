@@ -4,7 +4,7 @@ import {Input , Button ,Table} from 'antd'
 import './matrix.css'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
-import './Bisection.css'
+import './root_of_equation.css'
 import { calJacobi } from '../calculator'
 import { render } from '@testing-library/react'
 const math = require('mathjs');
