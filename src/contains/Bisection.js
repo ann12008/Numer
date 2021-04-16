@@ -4,6 +4,7 @@ import {Input , Button ,Table,Modal} from 'antd'
 import apis from '../API/index'
 import './root_of_equation.css'
 import { calBisection } from '../calculator'
+import {Modal_roe} from '../components/Modal'
 
 
 class Bisection extends React.Component {
@@ -82,31 +83,14 @@ class Bisection extends React.Component {
         
         return (
             <div>
-                <Modal
-                    title ='ตัวอย่าง'
-                    visible ={this.state.isModalVisible}
+                
+                <Modal_roe
+                    visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
-                    onCancel={this.onClickOk}
-                    footer = {[
-                        <Button type = 'primary' onClick={this.onClickOk}>
-                            Ok
-                        </Button>
-                    ]}
-                >
-                    {this.state.hasData ?
-                        this.state.apiData.map((x,i) =>(
-                            <Row>
-                                    <Col span={12}>{x['equation']}</Col>
-                                    <Col span={12}>
-                                        <Button name = {'insert_'+i} type='primary' onClick={this.onClickInsert}>Insert</Button>
-                                    </Col>
-                                    <hr/>
-
-                            </Row>
-                        ))
-                        : <span style={{fontSize:"25px", textAlign:"center"}}>กำลังโหลดข้อมูล</span>}
-                    
-                </Modal>
+                    hasData={this.state.hasData}
+                    apiData = {this.state.apiData}
+                    onClick={this.onClickInsert}
+                />
                      <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               Bisection Method

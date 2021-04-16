@@ -8,7 +8,7 @@ function checkEquation (equation){
 
     return equation
 }
-function copyArray(n,matrix1){
+export function copyArray(n,matrix1){
    let arr = []
     for(let i = 0;i < n ; i++){
         arr.push([])
@@ -310,8 +310,8 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
 
 export function calElimination(n, initialMatrix1, initialMatrix2) {
 
-    let matrix1=initialMatrix1
-    let matrix2=initialMatrix2
+    let matrix1=copyArray(n,initialMatrix1)  
+    let matrix2=copyArray(n,initialMatrix2)  
     
     
     
@@ -357,8 +357,8 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
 
 export function calJordan(n, initialMatrix1, initialMatrix2) {
 
-    let matrix1=initialMatrix1
-    let matrix2=initialMatrix2
+    let matrix1=copyArray(n,initialMatrix1)  
+    let matrix2=copyArray(n,initialMatrix2) 
     
     
     
@@ -415,8 +415,8 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
 
 export function calLu(n, initialMatrix1, initialMatrix2) {
 
-    let A = initialMatrix1
-    let B = initialMatrix2
+    let A = copyArray(n,initialMatrix1) 
+    let B = copyArray(n,initialMatrix2) 
 
    
    
@@ -448,11 +448,7 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
 
         }
     }
-    //  console.log(L.toString())
-    //  console.log(U.toString())
-    //  console.log(Y.toString())
-    //  console.log(X.toString())
-    
+   
     for (let i = 0; i < n; i++) {
 
         for (let j = 0; j < n; j++) {
@@ -519,8 +515,8 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
 export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
-    let matrix1=initialMatrix1
-    let matrix2=initialMatrix2
+    let matrix1=copyArray(n,initialMatrix1)
+    let matrix2=copyArray(n,initialMatrix2)
     
     let error = initialError
 
@@ -592,8 +588,8 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
 export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
-    let matrix1=initialMatrix1
-    let matrix2=initialMatrix2
+    let matrix1=copyArray(n,initialMatrix1)
+    let matrix2=copyArray(n,initialMatrix2)
     
     let error = initialError
 
@@ -665,10 +661,9 @@ export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
 
 export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
 
-    
-    let A = initialMatrix1
+    let A = copyArray(n,initialMatrix1)
 
-    let B = initialMatrix2
+    let B = [...initialMatrix2]
     
     let error = initialError
 
@@ -680,7 +675,7 @@ export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
     
     let K = 0;
     
-    let checkError = 9999
+    
 
     for(let i = 0 ; i < n ;i++){
        X.push(0)
@@ -694,7 +689,7 @@ export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
     let lambda = null;
 
     let alpha = null; 
-
+    let checkError = 9999
     while(checkError > error){
 
         lambda = math.transpose(D);
@@ -737,15 +732,17 @@ export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
         
         
         
-      
-    for(let i = 0 ; i < n ; i++){
-        arr.push({key : i , x : 'X'+(i+1) , valuex : X[i].toFixed(5)})
-    }
-     
+   
 
         
-    return arr
+   
 }
+   
+for(let i = 0 ; i < n ; i++){
+    arr.push({key : i , x : 'X'+(i+1) , valuex : X[i].toFixed(5)})
+}
+ 
+return arr
 }
 
 export function calNewtonInterpolation( initialMatrix1, initialPoint,initialX) {

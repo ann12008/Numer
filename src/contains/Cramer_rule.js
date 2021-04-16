@@ -1,37 +1,32 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-import {Input , Button ,Table,Modal} from 'antd'
+import { Button ,Table} from 'antd'
 import './matrix.css'
 import apis from '../API/index'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
+import {Modal_matrix} from '../components/Modal'
 
-import { calCramer } from '../calculator'
-const math = require('mathjs');
+import { calCramer , copyArray } from '../calculator'
+
 
 export default class Cramer_rule extends React.Component{
 
     state = {
         n: 2,
         matrixA: [[],[]],
-         matrixB: [],
-        colum: [{
-            title: 'X',
-            dataIndex: 'x'
-        },
-        {
-            title: 'valueX',
-            dataIndex: 'valuex'
-        }],
+        matrixB: [],
+        colum: [{title: 'X',dataIndex: 'x'},
+        {title: 'valueX',dataIndex: 'valuex'}],
         data: [],
         isModalVisible: false,
         apiData: [],
         hasData: false
     }
-
+    
     async getData() {
         let tempData = null
-        await apis.getRootofequation().then(res => { tempData = res.data })
+        await apis.getMatrix().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
@@ -44,14 +39,17 @@ export default class Cramer_rule extends React.Component{
         index = parseInt(index[1])
         this.setState({
             n: this.state.apiData[index]["n"],
-            matrixA: this.state.apiData[index]["matrixA"],
-            matrixB: this.state.apiData[index]["matrixB"],
+            
+            matrixA: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+
+            matrixB: [...this.state.apiData[index]["matrixB"]],
             
             isModalVisible: false
         })
     }
+
     onClickExample = e => {
-        if (!this.state.hasData) {
+         if (!this.state.hasData) { 
             this.getData()
         }
         this.setState({ isModalVisible: true })
@@ -60,13 +58,17 @@ export default class Cramer_rule extends React.Component{
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value 
-        this.state.matrixA[parseInt(index[0])][parseInt(index[1])] = value
+        let arr = this.state.matrixA
+        arr[parseInt(index[0])][parseInt(index[1])] = value
+        this.setState({matrixA : arr})
     
     }
     onChangematrixB = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value
-        this.state.matrixB[parseInt(index[1])] = value
+        let arr = this.state.matrixB
+        arr[parseInt(index[1])] = value
+        this.setState({matrixB : arr})
         // console.log(this.state.matrixB[0])
         // console.log(this.state.matrixB[1])
     
@@ -97,31 +99,13 @@ export default class Cramer_rule extends React.Component{
     render(){
         return(
             <div>
-                 <Modal
-                    title ='ตัวอย่าง'
-                    visible ={this.state.isModalVisible}
+                 <Modal_matrix
+                    visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
-                    onCancel={this.onClickOk}
-                    footer = {[
-                        <Button type = 'primary' onClick={this.onClickOk}>
-                            Ok
-                        </Button>
-                    ]}
-                >
-                    {this.state.hasData ?
-                        this.state.apiData.map((x,i) =>(
-                            <Row>
-                                    <Col span={12}>{x['equation']}</Col>
-                                    <Col span={12}>
-                                        <Button name = {'insert_'+i} type='primary' onClick={this.onClickInsert}>Insert</Button>
-                                    </Col>
-                                    <hr/>
-
-                            </Row>
-                        ))
-                        : <span style={{fontSize:"25px", textAlign:"center"}}>กำลังโหลดข้อมูล</span>}
-                    
-                </Modal>
+                    hasData={this.state.hasData}
+                    apiData = {this.state.apiData}
+                    onClick={this.onClickInsert}
+                />
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Cramer's Rule
