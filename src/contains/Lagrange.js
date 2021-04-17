@@ -147,7 +147,7 @@ export default class Lagrange extends React.Component{
                 </Row>
                 <Row style = {{ width : '100px',padding : '10px 40px'  }}>
                             <div>
-                            <Input  style = {{width : '150px' }} placeholder = 'Example = 1,2,3' value = {this.state.point} onChange = {this.onChangePoint}/>
+                            <Input  style = {{width : '150px' }} placeholder = 'Example = 1,2,3' value = {this.state.Point} onChange = {this.onChangePoint}/>
                             </div>
                  
                            

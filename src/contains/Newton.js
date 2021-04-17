@@ -5,7 +5,7 @@ import './matrix.css'
 import InputXY  from '../components/InputXY'
 import apis from '../API/index'
 import {calNewtonInterpolation , copyArray} from '../calculator'
-import {Modal_matrix} from '../components/Modal'
+import {Modal_matrix} from '../components/Modal'    
 
 const math = require('mathjs');
 
