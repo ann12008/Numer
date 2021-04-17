@@ -40,14 +40,16 @@ export default class Multi_linear_regression extends React.Component{
     
                 matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
     
+                valueX1: this.state.apiData[index]["x1"],
     
-    
-                valueX: this.state.apiData[index]["x"],
+                valueX2: this.state.apiData[index]["x2"],
+
+                valueX3: this.state.apiData[index]["x3"],
     
     
                 isModalVisible: false
             })
-            console.log(this.state.valueX)
+            
         }
         onClickExample = e => {
             if (!this.state.hasData) {
@@ -69,7 +71,9 @@ export default class Multi_linear_regression extends React.Component{
     onChangematrixXY = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value
-        this.state.matrixA[parseInt(index[0])][parseInt(index[1])] = parseInt(value)
+        let arr = this.state.matrixA
+        arr[parseInt(index[0])][parseInt(index[1])] = value
+        this.setState({ matrixA: arr })
        
        
     
@@ -96,6 +100,13 @@ export default class Multi_linear_regression extends React.Component{
     render(){
         return(
             <div>
+                <Modal_matrix
+                    visible={this.state.isModalVisible}
+                    onOK={this.onClickOk}
+                    hasData={this.state.hasData}
+                    apiData={this.state.apiData}
+                    onClick={this.onClickInsert}
+                />
                 <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               Multi-linear Regression
@@ -118,7 +129,7 @@ export default class Multi_linear_regression extends React.Component{
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Col span={24}> <InputMultiple  n={this.state.n} onChange={this.onChangematrixXY} /> </Col>
+                             <Col span={24}> <InputMultiple  n={this.state.n}  value = {this.state.matrixA} onChange={this.onChangematrixXY} /> </Col>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
@@ -128,7 +139,7 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000' onChange = {this.onChangeX1}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.x1} onChange = {this.onChangeX1}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
@@ -138,7 +149,7 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000' onChange = {this.onChangeX2}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.x2} onChange = {this.onChangeX2}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
@@ -148,12 +159,16 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000' onChange = {this.onChangeX3}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'   value = {this.state.x3} onChange = {this.onChangeX3}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
-                             <Col span = {24} >
-                              <Button onClick = {this.onClickCalculator}>คำนวณ</Button>
+                            <Col >
+                                <Button onClick={this.onClickCalculator}>คำนวณ</Button>
+                            </Col>
+
+                            <Col style={{ padding: '0px 0px 0px 20px' }} >
+                                <Button size='large' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
                             </Col>
                              </Row>
                          </Col>
