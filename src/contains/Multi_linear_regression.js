@@ -139,7 +139,7 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.x1} onChange = {this.onChangeX1}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.valueX1} onChange = {this.onChangeX1}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
@@ -149,7 +149,7 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.x2} onChange = {this.onChangeX2}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'  value = {this.state.valueX2} onChange = {this.onChangeX2}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
@@ -159,7 +159,7 @@ export default class Multi_linear_regression extends React.Component{
                             </Row>
                              <Row className = 'inputdata'>
                              <div>
-                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'   value = {this.state.x3} onChange = {this.onChangeX3}/>
+                             <Input  style = {{width : '150px' }} placeholder = 'Example = 40000'   value = {this.state.valueX3} onChange = {this.onChangeX3}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>
