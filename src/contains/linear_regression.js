@@ -136,13 +136,13 @@ export default class linear_regression extends React.Component {
                             </div>
                         </Row>
                         <Row className='inputdata'>
-                        <Col >
-                    <Button onClick={this.onClickCalculator}>คำนวณ</Button>
-                    </Col>
-                   
-                    <Col style = {{padding : '0px 0px 0px 20px'}} >
-                     <Button size='large' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
-                    </Col>
+                            <Col >
+                                <Button onClick={this.onClickCalculator}>คำนวณ</Button>
+                            </Col>
+
+                            <Col style={{ padding: '0px 0px 0px 20px' }} >
+                                <Button size='large' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
+                            </Col>
                         </Row>
                     </Col>
                     <Col span={16}>

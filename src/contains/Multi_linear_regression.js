@@ -3,15 +3,58 @@ import { Row, Col } from 'antd'
 import {Input , Button ,Table} from 'antd'
 import './matrix.css'
 import InputMultiple  from '../components/InputMultiple'
-import {calMultiple} from '../calculator'
-
+import {calMultiple,copyArray} from '../calculator'
+import apis from '../API/index'
+import {Modal_matrix} from '../components/Modal'  
 
 const math = require('mathjs');
 
 
 export default class Multi_linear_regression extends React.Component{
-    state = {n : 2, matrixA : [[],[]]  ,valueX1 : '',valueX2 : '',valueX3 : '', colum : [{title : 'fX', dataIndex : 'fx'},{title : 'valueX' ,dataIndex : 'valuex'}] ,data : []}
-
+    state = {n : 2,
+         matrixA : [[],[]]  ,
+         valueX1 : '',
+         valueX2 : '',
+         valueX3 : '',
+          colum : [{title : 'fX', dataIndex : 'fx'},
+          {title : 'valueX' ,dataIndex : 'valuex'}] ,
+          data : [],
+          isModalVisible: false,
+          apiData: [],
+          hasData: false}
+          async getData() {
+            let tempData = null
+            await apis.getMatrixRegression().then(res => { tempData = res.data })
+            this.setState({ apiData: tempData })
+            this.setState({ hasData: true })
+            // console.log(tempData)
+        }
+        onClickOk = e => {
+            this.setState({ isModalVisible: false })
+        }
+        onClickInsert = e => {
+            let index = e.currentTarget.getAttribute('name').split('_')
+            index = parseInt(index[1])
+            this.setState({
+                n: this.state.apiData[index]["n"],
+    
+                matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
+    
+    
+    
+                valueX: this.state.apiData[index]["x"],
+    
+    
+                isModalVisible: false
+            })
+            console.log(this.state.valueX)
+        }
+        onClickExample = e => {
+            if (!this.state.hasData) {
+                this.getData()
+            }
+            this.setState({ isModalVisible: true })
+        }
     onChangeX1 = e => {
             this.setState({valueX1 : e.target.value})
     }
