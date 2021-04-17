@@ -26,7 +26,7 @@ export default class linear_regression extends React.Component {
     }
     async getData() {
         let tempData = null
-        await apis.getMatrixInterpolation().then(res => { tempData = res.data })
+        await apis.getMatrixRegression().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
@@ -136,15 +136,13 @@ export default class linear_regression extends React.Component {
                             </div>
                         </Row>
                         <Row className='inputdata'>
-                            <Col span={24} >
-                                <Col >
-                                    <Button onClick={this.onClickCalculator}>คำนวณ</Button>
-                                </Col>
-
-                                <Col style={{ padding: '0px 0px 0px 20px' }} >
-                                    <Button size='large' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
-                                </Col>
-                            </Col>
+                        <Col >
+                    <Button onClick={this.onClickCalculator}>คำนวณ</Button>
+                    </Col>
+                   
+                    <Col style = {{padding : '0px 0px 0px 20px'}} >
+                     <Button size='large' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
+                    </Col>
                         </Row>
                     </Col>
                     <Col span={16}>
