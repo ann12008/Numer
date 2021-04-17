@@ -767,7 +767,7 @@ export function calNewtonInterpolation( initialMatrix1, initialPoint,initialX) {
 
    
 
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : findX(X) })
+    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : findX(X).toFixed(5) })
 
    return ans
 }
