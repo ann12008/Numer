@@ -27,32 +27,32 @@ export default class Spline extends React.Component{
             this.setState({ hasData: true })
             // console.log(tempData)
         }
-        onClickOk = e => {
-            this.setState({ isModalVisible: false })
-        }
-        onClickInsert = e => {
-            let index = e.currentTarget.getAttribute('name').split('_')
-            index = parseInt(index[1])
-            this.setState({
-                n: this.state.apiData[index]["n"],
-    
-                matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
-                
-                
+    onClickOk = e => {
+        this.setState({ isModalVisible: false })
+    }
+    onClickInsert = e => {
+        let index = e.currentTarget.getAttribute('name').split('_')
+        index = parseInt(index[1])
+        this.setState({
+            n: this.state.apiData[index]["n"],
 
-                valueX : this.state.apiData[index]["x"],
-                
-                
-                isModalVisible: false
-            })
-            console.log(this.state.valueX)
+            matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
+
+
+
+            valueX: this.state.apiData[index]["x"],
+
+
+            isModalVisible: false
+        })
+        console.log(this.state.valueX)
+    }
+    onClickExample = e => {
+        if (!this.state.hasData) {
+            this.getData()
         }
-        onClickExample = e => {
-            if (!this.state.hasData) {
-                this.getData()
-            }
-               this.setState({ isModalVisible: true })
-           }
+        this.setState({ isModalVisible: true })
+    }
     onChangeX = e => {
             this.setState({valueX : e.target.value})
     }
@@ -91,6 +91,13 @@ export default class Spline extends React.Component{
     render(){
         return(
             <div>
+                 <Modal_matrix
+                    visible={this.state.isModalVisible}
+                    onOK={this.onClickOk}
+                    hasData={this.state.hasData}
+                    apiData = {this.state.apiData}
+                    onClick={this.onClickInsert}
+                />
                   <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                                     Spline interpolation
