@@ -1,4 +1,4 @@
-import { bignumber, e, identity, matrix } from 'mathjs';
+
 var regression = require('regression')
 var interpolationQuadratic_Poly_linear = require('interpolating-polynomial')
 const Spline = require('cubic-spline');
