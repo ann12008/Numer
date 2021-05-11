@@ -22,7 +22,7 @@ import polynomial_regression from './contains/Polynomial_regression';
 import Multi_linear_regression from './contains/Multi_linear_regression';
 import Swagger from './Swagger';
 import { Row, Col } from 'antd'
-import { render } from '@testing-library/react';
+
 
 
 
@@ -35,6 +35,7 @@ class App extends React.Component {
          
         <HashRouter>
           <Redirect exact from = '/' to = '/bisection'/>
+          
         <Top_header />
         
         
