@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Top_header from './components/Top_header'
+import Topheader from './components/Top_header'
 import { Route, HashRouter ,Redirect  } from "react-router-dom"
 import Bisection from './contains/Bisection'
 import Fasle_Position from './contains/False_Position'
