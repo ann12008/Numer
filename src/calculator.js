@@ -269,7 +269,7 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
     let i = 1;
 
 
-    let oldX = 0;
+    
 
     let checkError = 9999
     let oldcheckError = 9999;
@@ -292,7 +292,7 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
         }
         oldcheckError = checkError;
 
-        oldX = x
+        
 
 
         arr.push({key : i, iteration: i.toString(), x: x.toFixed(15).toString(), error: checkError.toFixed(15).toString() })
