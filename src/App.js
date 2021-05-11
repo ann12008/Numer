@@ -35,8 +35,8 @@ class App extends React.Component {
          
         <HashRouter>
           <Redirect exact from = '/' to = '/bisection'/>
-          
-        <Top_header />
+
+        <Topheader />
         
         
         <div >

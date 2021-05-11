@@ -56,7 +56,7 @@ const Regression =(
 </Menu>
 )
 
-class Top_header extends React.Component {
+class Topheader extends React.Component {
     render() {
         return (
             <div>
@@ -105,4 +105,4 @@ class Top_header extends React.Component {
         )
     }
 }
-export default Top_header
+export default Topheader
