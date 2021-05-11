@@ -17,6 +17,32 @@ export function copyArray(n,matrix1){
     return arr;
 
 }
+export function parsearray1D(matrix1){
+    let arr = []
+    for(let i =0 ; i < matrix1.length ;i++)
+        {
+      
+            arr[i] = parseInt(matrix1[i])
+
+        }
+        return arr 
+    }   
+   
+
+export function parsearray2D(n,matrix1){
+    let arr = []
+    for(let i =0 ; i < n ;i++){
+        arr.push([])
+        for(let j = 0 ; j < n ; j++){
+
+            arr[i][j] = (parseFloat(matrix1[i][j]))
+
+        }
+    }   
+    return arr 
+}
+
+
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
     let equation = checkEquation(initialEquation)
         equation = math.parse(equation).compile()
@@ -27,6 +53,7 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
     let arr = []
 
+    
 
     let xm = math.divide(math.add(xl,xr),2)
 
@@ -62,7 +89,7 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
       
         arr.push({key : i , iteration : i.toString() ,xm : xm.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
-        
+
         i++;
     
     }
@@ -114,7 +141,7 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
 
         oldX1 = x1
 
-        arr.push({key : i , iteration : i.toString() ,x1 : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
+        arr.push({key : i , iteration : i.toString() ,xm : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
         console.log(i.toString())
         console.log(x1.toString())
         console.log(checkError.toString())
@@ -930,9 +957,16 @@ export function calLinear(initialMatrix1,initialX){
 
 
 export function calPoly(initialMatrix1,initialX){
+
+    let arr = copyArray(initialMatrix1.length,initialMatrix1)
+
+    console.log(arr)
     
-    let arr = initialMatrix1
-  
+    arr = parsearray2D(arr.length,arr)
+
+    console.log(arr)
+
+    
     
    
     const result = regression.polynomial(arr);
@@ -945,7 +979,7 @@ export function calPoly(initialMatrix1,initialX){
     console.log(a2)
 
     let ans = [] 
-    let fx = a0+(a1*X)+(a2*(X*X))
+    let fx = a2+(a1*X)+(a0*(X*X))
     ans.push({key :  1 ,fx : 'f('+X+')' , valuex : fx.toFixed(5) })
 	
 

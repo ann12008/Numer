@@ -27,6 +27,7 @@ import { Button ,Modal} from 'antd'
                                     <Col span={12}>{x['equation']}</Col>
                                     <Col span={12}>
                                         <Button name = {'insert_'+i} type='primary' onClick={this.props.onClick}>Insert</Button>
+                                        
                                     </Col>
                                     <hr/>
                                

@@ -20,7 +20,11 @@ import Spline from './contains/Spline';
 import linear_regression from './contains/linear_regression';
 import polynomial_regression from './contains/Polynomial_regression';
 import Multi_linear_regression from './contains/Multi_linear_regression';
+import Swagger from './Swagger';
 import { Row, Col } from 'antd'
+import { render } from '@testing-library/react';
+
+
 
 
 class App extends React.Component {
@@ -33,8 +37,9 @@ class App extends React.Component {
           <Redirect exact from = '/' to = '/bisection'/>
         <Top_header />
         
-        <div >
         
+        <div >
+       
           <Row >
             <Col  className = 'content' span={18} offset={3}>
             <Route  path = '/bisection' component = {Bisection} />
@@ -55,6 +60,7 @@ class App extends React.Component {
              <Route path = '/linear-regression' component = {linear_regression}/>
              <Route path = '/polynomial-regression' component = {polynomial_regression}/>
              <Route path = '/multiple-linear-regression' component = {Multi_linear_regression}/>
+             <Route path = '/Swagger' component = {Swagger}/>
             </Col>
          
 

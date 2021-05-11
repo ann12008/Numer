@@ -5,6 +5,7 @@ import apis from '../API/index'
 import './root_of_equation.css'
 import { calBisection } from '../calculator'
 import {Modal_roe} from '../components/Modal'
+import { and } from 'mathjs'
 
 
 class Bisection extends React.Component {
@@ -14,7 +15,7 @@ class Bisection extends React.Component {
          xl : '' ,
          xr : '' , 
          error : '' , 
-        
+       
          colum : [
              {title : 'Iteration', dataIndex : 'iteration'},
              {title : 'Xm', dataIndex : 'xm'},
@@ -46,6 +47,8 @@ class Bisection extends React.Component {
                     isModalVisible : false
                 })
             }
+
+            
             
     onClickExample = e =>{
                 if(!this.state.hasData){
@@ -55,6 +58,7 @@ class Bisection extends React.Component {
             }
     onChangeEquation = e =>{
         this.setState({equation : e.target.value})
+       
     }
     onChangeXL = e =>{
         this.setState({xl : e.target.value})

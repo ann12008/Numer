@@ -86,12 +86,9 @@ export default class Cramer_rule extends React.Component{
         }
     }
     onClickCalculator = (e)=>{
-        try{
+        
             this.setState({data : calCramer(this.state.n,this.state.matrixA,this.state.matrixB)})
-        }
-        catch(error){
-            
-        }
+       
     }
 
     

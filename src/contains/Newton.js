@@ -65,7 +65,7 @@ export default class Newton extends React.Component{
         
         
         this.setState({Point : index.split(",")})
-}
+    }
 
     onChangematrixXY = (e) =>{
         let index = e.target.name.split(" ")

@@ -15,6 +15,7 @@ export default class Jacobi extends React.Component{
     state = {n : 2,
         matrixA : [[],[]],
         matrixB :[],
+        error : '',
         colum : [{title : 'X', dataIndex : 'x'},
         {title : 'valueX' ,dataIndex : 'valuex'}] ,
         data : [], 
@@ -42,6 +43,8 @@ export default class Jacobi extends React.Component{
             matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
 
             matrixB: [...this.state.apiData[index]["matrixB"]],
+            
+            error : this.state.apiData[index]["error"],
 
             isModalVisible: false
         })
@@ -137,7 +140,7 @@ export default class Jacobi extends React.Component{
                 </Row>
                 <Row style = {{ width : '100px',padding : '0px 40px'  }}>
                             <div>
-                            <Input  style = {{width : '150px' }} placeholder = 'Example = 0.00001' onChange = {this.onChangeError}/>
+                            <Input  style = {{width : '150px' }} placeholder = 'Example = 0.00001' value ={this.state.error} onChange = {this.onChangeError}/>
                             </div>
                  
                            
