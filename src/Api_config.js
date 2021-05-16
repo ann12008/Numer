@@ -22,7 +22,7 @@ const config = {
                         "description": "ทำงานสำเร็จ"
                     }
                     ,
-                    "400": {
+                    "404": {
                         "description": "ทำงานไม่สำเร็จ"
                     }
                 }
