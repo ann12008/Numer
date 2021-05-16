@@ -21,12 +21,7 @@ class False_Position extends React.Component {
         { title: 'X1', dataIndex: 'x1' },
         { title: 'Error', dataIndex: 'error' }],
         data: [],
-        colum: [
-            { title: 'Iteration', dataIndex: 'iteration' },
-            { title: 'Xm', dataIndex: 'xm' },
-            { title: 'Error', dataIndex: 'error' }
-        ],
-        data: [],
+        
         isModalVisible: false,
         apiData: [],
         hasData: false
@@ -61,6 +56,7 @@ class False_Position extends React.Component {
 
     onChangeEquation = e => {
         this.setState({ equation: e.target.value })
+        
     }
     onChangeXL = e => {
         this.setState({ xl: e.target.value })
@@ -104,7 +100,7 @@ class False_Position extends React.Component {
                              </Row>
                              <Row className = 'inputdata'>
                              <div>
-                                <Input className = 'input' placeholder = 'XL = 0.00'value = {this.state.xl} onChange = {this.onChangeXL}/>
+                                <Input className = 'input' placeholder = 'XL = 0.00' value = {this.state.xl} onChange = {this.onChangeXL}/>
                             </div>
                              </Row>
                              <Row className = 'inputdata'>

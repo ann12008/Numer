@@ -5,7 +5,7 @@ import apis from '../API/index'
 import './root_of_equation.css'
 import { calBisection } from '../calculator'
 import {Modal_roe} from '../components/Modal'
-import { and } from 'mathjs'
+
 
 
 class Bisection extends React.Component {
@@ -24,7 +24,8 @@ class Bisection extends React.Component {
             data : [],
             isModalVisible : false,
             apiData : [],
-            hasData : false};
+            hasData : false
+        };
 
     async getData(){
                 let tempData = null
@@ -88,7 +89,7 @@ class Bisection extends React.Component {
         return (
             <div>
                 
-                <Modal_roe
+                <Modal_roe 
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}

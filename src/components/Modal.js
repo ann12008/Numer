@@ -62,7 +62,7 @@ class Modal_matrix extends React.Component{
                         
                         this.props.apiData.map((x,i) =>(
                             <Row>
-                                    <Col span={12}>โจทย์ {x['id']+1}</Col>
+                                    <Col span={12}>โจทย์ {x["id"]+1}</Col>
                                     <Col span={12}>
                                         <Button name = {'insert_'+i} type='primary'  onClick={this.props.onClick}>Insert</Button>
                                     </Col>

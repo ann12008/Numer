@@ -1,9 +1,10 @@
 import React from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Button } from 'antd'
 import './Top_header.css'
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
+
 const rootofequation = (
     <Menu className='menu_Topic'>
 
@@ -56,6 +57,8 @@ const Regression =(
 </Menu>
 )
 
+
+
 class Topheader extends React.Component {
     render() {
         return (
@@ -66,7 +69,7 @@ class Topheader extends React.Component {
                         NUMER
                     </Col>
 
-                    <Col className='topic' span={5}>
+                    <Col className='topic' span={4}>
 
                         <Dropdown overlay={rootofequation}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
@@ -75,7 +78,7 @@ class Topheader extends React.Component {
                         </Dropdown>
                     </Col>
 
-                    <Col className='topic' span={5}>
+                    <Col className='topic' span={4}>
 
                         <Dropdown overlay={matrix}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
@@ -84,7 +87,7 @@ class Topheader extends React.Component {
                         </Dropdown>
                     </Col>
 
-                    <Col className='topic' span={5}>
+                    <Col className='topic' span={4}>
 
                         <Dropdown overlay={Interpolation}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
@@ -92,13 +95,18 @@ class Topheader extends React.Component {
                             </a>
                         </Dropdown>
                     </Col>
-                    <Col className='topic' span={5}>
+                    <Col className='topic' span={4}>
 
                         <Dropdown overlay={Regression}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                 LEAST-SQUARES REGRESSION <DownOutlined />
                             </a>
                         </Dropdown>
+                    </Col>
+                    <Col className='topic' span={4}>
+
+                                        <Button ><Link to  = '/Swagger'>Swagger</Link></Button>
+
                     </Col>
                 </Row>
             </div>

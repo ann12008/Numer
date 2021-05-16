@@ -17,7 +17,7 @@ export default class Cramer_rule extends React.Component{
         matrixA: [[],[]],
         matrixB: [],
         colum: [{title: 'X',dataIndex: 'x'},
-        {title: 'valueX',dataIndex: 'valuex'}],
+        {title: 'ValueX',dataIndex: 'valuex'}],
         data: [],
         isModalVisible: false,
         apiData: [],
@@ -39,8 +39,9 @@ export default class Cramer_rule extends React.Component{
         index = parseInt(index[1])
         this.setState({
             n: this.state.apiData[index]["n"],
-            
-            matrixA: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+          
+
+             matrixA: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
 
             matrixB: [...this.state.apiData[index]["matrixB"]],
             

@@ -141,7 +141,7 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
 
         oldX1 = x1
 
-        arr.push({key : i , iteration : i.toString() ,xm : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
+        arr.push({key : i , iteration : i.toString() ,x1 : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
         console.log(i.toString())
         console.log(x1.toString())
         console.log(checkError.toString())
