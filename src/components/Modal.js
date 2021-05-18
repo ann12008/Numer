@@ -12,7 +12,7 @@ import { Button ,Modal} from 'antd'
                  <Modal
                     title ='ตัวอย่าง'
                     visible ={this.props.visible}
-                    onOK={this.props.onOK}
+                    
                     onCancel={this.props.onOK}
                     footer = {[
                         <Button type = 'primary' onClick={this.props.onOK}>

@@ -11,7 +11,8 @@ const math = require('mathjs');
 
 
 export default class Multi_linear_regression extends React.Component{
-    state = {n : 2,
+    state = {
+         n : 2,
          matrixA : [[],[]]  ,
          valueX1 : '',
          valueX2 : '',

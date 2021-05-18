@@ -3,7 +3,7 @@ const config = {
     ,
     "info": {
         "description": "API Doccument By Swagger. จัดทำหน้านี้ขึ้นเพื่อรวบรวม API ที่ใช้บนเว็บไซต์นี้",
-        "title": "Swagger Numerical Method"
+        "title": "Supawadee Numerical Method"
     }
     ,
     "host": "my-json-server.typicode.com/ann12008/Numer"
