@@ -5,7 +5,7 @@ import './matrix.css'
 import InputMultiple  from '../components/InputMultiple'
 import {calMultiple,copyArray} from '../calculator'
 import apis from '../API/index'
-import {Modal_matrix} from '../components/Modal'  
+import {Modal_regression} from '../components/Modal'  
 
 const math = require('mathjs');
 
@@ -22,7 +22,9 @@ export default class Multi_linear_regression extends React.Component{
           data : [],
           isModalVisible: false,
           apiData: [],
-          hasData: false}
+          hasData: false,
+          id : 2
+        }
           async getData() {
             let tempData = null
             await apis.getMatrixRegression().then(res => { tempData = res.data })
@@ -101,12 +103,13 @@ export default class Multi_linear_regression extends React.Component{
     render(){
         return(
             <div>
-                <Modal_matrix
+                <Modal_regression
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}
                     apiData={this.state.apiData}
                     onClick={this.onClickInsert}
+                    id = {this.state.id}
                 />
                 <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>

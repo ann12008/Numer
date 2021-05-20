@@ -78,8 +78,44 @@ class Modal_matrix extends React.Component{
     }
 }
 
+class Modal_regression extends React.Component{
+
+    render(){
+        return(
+            <div>
+                
+                <Modal
+                    title ='ตัวอย่าง'
+                    visible ={this.props.visible}
+                    onOK={this.props.onOK}
+                    onCancel={this.props.onOK}
+                    footer = {[
+                        <Button type = 'primary' onClick={this.props.onOK}>
+                            Ok
+                        </Button>
+                    ]}
+                >   
+                   {this.props.hasData ?
+                        
+                       
+                            <Row>
+                                    <Col span={12}>โจทย์ {parseInt(this.props.id+1)}</Col>
+                                    <Col span={12}>
+                                        <Button name = {'insert_'+this.props.id} type='primary'  onClick={this.props.onClick}>Insert</Button>
+                                    </Col>
+                                    <hr/>
+
+                            </Row>
+                        
+                        : <span style={{fontSize:"25px", textAlign:"center"}}>กำลังโหลดข้อมูล</span>}
+                    
+                </Modal>
+            </div>
+        )
+    }
+}
 
 
 
-export {Modal_roe , Modal_matrix}
+export {Modal_roe , Modal_matrix,Modal_regression}
 

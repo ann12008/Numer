@@ -5,7 +5,7 @@ import './matrix.css'
 import InputXY  from '../components/InputXY'
 import {calLinear,copyArray} from '../calculator'
 import apis from '../API/index'
-import {Modal_matrix} from '../components/Modal'    
+import {Modal_regression} from '../components/Modal'    
 
 
 const math = require('mathjs');
@@ -22,7 +22,8 @@ export default class linear_regression extends React.Component {
         data: [],
         isModalVisible: false,
         apiData: [],
-        hasData: false
+        hasData: false,
+        id : 0
     }
     async getData() {
         let tempData = null
@@ -93,12 +94,13 @@ export default class linear_regression extends React.Component {
     render(){
         return(
             <div>
-                <Modal_matrix
+                <Modal_regression
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}
                     apiData={this.state.apiData}
                     onClick={this.onClickInsert}
+                    id = {this.state.id}
                 />
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
