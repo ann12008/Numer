@@ -67,19 +67,7 @@ class App extends React.Component {
 
           </Row>
         
-        {/* <Route path = '/bisection'component = {Bisection}/>
-         <Route path = '/false-position' component = {False_position} />
-         <Route path = '/one-point' component = {One_point} />
-         <Route path = '/newton-raphson' component = {Newton_raphson} />
-         <Route path = '/secant' component = {Secant} />
-        
-         <Route path = '/cramer' component = {Cramer} />
-         <Route path = '/guass-elimation' component = {Guass_elimation} />
-         <Route path = '/lu-decompostion' component = {Lu_decomposition} />
-         <Route path = '/jacobi-iteration' component = {Jacobi} />
-         <Route path = '/guass-seidel' component = {Guass_seidel} />
-         <Route path = '/guass-jordan' component = {Guass_jordan} />
-         <Route path = '/conjugate-gradient' component = {Conjugate_gradient} /> */}
+       
         </div>
         </HashRouter>
        

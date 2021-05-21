@@ -11,11 +11,11 @@ import {Modal_roe} from '../components/Modal'
 class Bisection extends React.Component {
 
     state = { 
-        equation : '' ,
+        equation : '',
          xl : '' ,
          xr : '' , 
          error : '' , 
-       
+        
          colum : [
              {title : 'Iteration', dataIndex : 'iteration'},
              {title : 'Xm', dataIndex : 'xm'},
@@ -28,34 +28,32 @@ class Bisection extends React.Component {
         };
 
     async getData(){
+
                 let tempData = null
                 await apis.getRootofequation().then(res => {tempData = res.data})
                 this.setState({apiData:tempData})
-                this.setState({hasData:true})
-                // console.log(tempData)
-            }
-    onClickOk = e =>{
-                this.setState({isModalVisible:false})
-            }
-    onClickInsert = e =>{
-         let index = e.currentTarget.getAttribute('name').split('_')
-                index = parseInt(index[1])
+                this.setState({hasData : true})
+                console.log(this.state.apiData)
+                console.log(this.state.apiData[0])
+                // set ค่าของข้อมูลใน State 
                 this.setState({
-                    equation: this.state.apiData[index]["equation"],
-                    xl : this.state.apiData[index]["xl"],
-                    xr : this.state.apiData[index]["xr"],
-                    error : this.state.apiData[index]["error"],
-                    isModalVisible : false
+                    equation: this.state.apiData[0]["equation"],
+                    xl : this.state.apiData[0]["xl"],
+                    xr : this.state.apiData[0]["xr"],
+                    error : this.state.apiData[0]["error"],
+                    
                 })
-            }
-
-            
+                
+            }   
             
     onClickExample = e =>{
-                if(!this.state.hasData){
-                    this.getData()
-                }
-                this.setState({isModalVisible:true})
+                    if(!this.state.hasData){
+                        this.getData()
+                    }
+                    
+                  
+                
+               
             }
     onChangeEquation = e =>{
         this.setState({equation : e.target.value})
@@ -88,14 +86,14 @@ class Bisection extends React.Component {
         
         return (
             <div>
-                
+{/*                 
                 <Modal_roe 
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}
                     apiData = {this.state.apiData}
                     onClick={this.onClickInsert}
-                />
+                /> */}
                      <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               Bisection Method

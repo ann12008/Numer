@@ -42,7 +42,7 @@ class OnePoint extends React.Component {
         index = parseInt(index[1])
         this.setState({
             equation: this.state.apiData[index]["equation"],
-            x: this.state.apiData[index]["xl"],
+            x: this.state.apiData[index]["x"],
             
             error: this.state.apiData[index]["error"],
             isModalVisible: false
