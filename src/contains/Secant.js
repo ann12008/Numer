@@ -4,7 +4,7 @@ import {Input , Button ,Table,Modal} from 'antd'
 import apis from '../API/index'
 import './root_of_equation.css'
 import {calSecant} from '../calculator'
-import {Modal_roe} from '../components/Modal'
+
 
 export default class Secant extends React.Component {
     state = {
@@ -19,7 +19,7 @@ export default class Secant extends React.Component {
         { title: 'X', dataIndex: 'x' },
         { title: 'Error', dataIndex: 'error' }],
         data: [],
-        isModalVisible: false,
+      
         apiData: [],
         hasData: false
     }
@@ -30,26 +30,20 @@ export default class Secant extends React.Component {
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
         this.setState({
-            equation: this.state.apiData[index]["equation"],
-            x0: this.state.apiData[index]["xl"],
-            x1: this.state.apiData[index]["xr"],
-            error: this.state.apiData[index]["error"],
+            equation: this.state.apiData[4]["equation"],
+            x0: this.state.apiData[4]["xl"],
+            x1: this.state.apiData[4]["xr"],
+            error: this.state.apiData[4]["error"],
             isModalVisible: false
         })
     }
+  
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
         }
-        this.setState({ isModalVisible: true })
+     
     }
 
     onChangeEquation = e => {
@@ -74,13 +68,7 @@ export default class Secant extends React.Component {
     render(){
         return(
             <div>
-                <Modal_roe
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+              
                  <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               Secant Method

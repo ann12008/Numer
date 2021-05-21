@@ -4,7 +4,7 @@ import {Input , Button ,Table,Modal} from 'antd'
 import './root_of_equation.css'
 import {calNewton} from '../calculator'
 import apis from '../API/index'
-import {Modal_roe} from '../components/Modal'
+
 
 class Newton_Raphson extends React.Component{
     state = {
@@ -18,7 +18,7 @@ class Newton_Raphson extends React.Component{
         { title: 'X', dataIndex: 'x' },
         { title: 'Error', dataIndex: 'error' }],
         data: [],
-        isModalVisible: false,
+        
         apiData: [],
         hasData: false
     }
@@ -29,25 +29,19 @@ class Newton_Raphson extends React.Component{
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
         this.setState({
-            equation: this.state.apiData[index]["equation"],
-            x: this.state.apiData[index]["xl"],
-            error: this.state.apiData[index]["error"],
-            isModalVisible: false
+            equation: this.state.apiData[3]["equation"],
+            x: this.state.apiData[3]["x"],
+            error: this.state.apiData[3]["error"],
+            
         })
     }
+
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
         }
-        this.setState({ isModalVisible: true })
+        
     }
 
     onChangeEquation = e => {
@@ -69,13 +63,7 @@ class Newton_Raphson extends React.Component{
         render(){
             return(
             <div>
-                <Modal_roe
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                    <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               Newton-Raphson Method

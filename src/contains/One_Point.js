@@ -4,7 +4,7 @@ import {Input , Button ,Table,Modal} from 'antd'
 import './root_of_equation.css'
 import apis from '../API/index'
 import {calOnepoint} from '../calculator'
-import {Modal_roe} from '../components/Modal'
+
 
 class OnePoint extends React.Component {
 
@@ -20,7 +20,7 @@ class OnePoint extends React.Component {
         { title: 'X', dataIndex: 'x' },
         { title: 'Error', dataIndex: 'error' }],
         data: [],
-        isModalVisible: false,
+        
         apiData: [],
         hasData: false
     }
@@ -30,30 +30,22 @@ class OnePoint extends React.Component {
         await apis.getRootofequation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
-        // console.log(tempData)
-    }
-
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
+       
         this.setState({
-            equation: this.state.apiData[index]["equation"],
-            x: this.state.apiData[index]["x"],
+            equation: this.state.apiData[2]["equation"],
+            x: this.state.apiData[2]["x"],
             
-            error: this.state.apiData[index]["error"],
-            isModalVisible: false
+            error: this.state.apiData[2]["error"],
+           
         })
     }
+
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
            
         }
-        this.setState({ isModalVisible: true })
+       
     }
     onChangeEquation = e => {
         this.setState({ equation: e.target.value })
@@ -76,13 +68,7 @@ class OnePoint extends React.Component {
         return(
             <div>
                
-                <Modal_roe
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+              
                  <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               One-Point Iteration Method
