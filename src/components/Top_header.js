@@ -99,7 +99,7 @@ class Topheader extends React.Component {
 
                         <Dropdown overlay={Regression}>
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                LEAST-SQUARES REGRESSION <DownOutlined />
+                                 REGRESSION <DownOutlined />
                             </a>
                         </Dropdown>
                     </Col>

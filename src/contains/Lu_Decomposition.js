@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-import {Input , Button ,Table} from 'antd'
+import { Button ,Table} from 'antd'
 import './matrix.css'
 import apis from '../API/index'
 import Inputmatrix  from '../components/Inputmatrix'
@@ -46,10 +46,11 @@ export default class Lu_Decomposition extends React.Component{
          
        }
     onChangematrixA = (e) =>{
+        console.log("A")
         let index = e.target.name.split(" ")
         let value = e.target.value 
         let arr = this.state.matrixA
-        arr[parseInt(index[0])][parseInt(index[1])] = value
+         arr[parseInt(index[0])][parseInt(index[1])] = value
         this.setState({matrixA : arr})
     
     }

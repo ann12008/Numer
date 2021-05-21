@@ -12,7 +12,7 @@ export function copyArray(n,matrix1){
    let arr = []
     for(let i = 0;i < n ; i++){
         arr.push([])
-        arr[i] = [].concat(matrix1[i])
+        arr[i] = [...matrix1[i]]
     }
     return arr;
 
