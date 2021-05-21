@@ -20,14 +20,14 @@ class Newton_Raphson extends React.Component{
         data: [],
         
         apiData: [],
-        hasData: false
+        
     }
 
     async getData() {
         let tempData = null
         await apis.getRootofequation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+        
         // console.log(tempData)
         this.setState({
             equation: this.state.apiData[3]["equation"],
@@ -38,9 +38,9 @@ class Newton_Raphson extends React.Component{
     }
 
     onClickExample = e => {
-        if (!this.state.hasData) {
+        
             this.getData()
-        }
+       
         
     }
 

@@ -20,13 +20,13 @@ export default class Conjugate extends React.Component{
         data : [], 
       
         apiData: [],
-        hasData: false
+      
     }
         async getData() {
             let tempData = null
             await apis.getMatrix().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
-            this.setState({ hasData: true })
+           
             // console.log(tempData)
 
             this.setState({
@@ -43,9 +43,9 @@ export default class Conjugate extends React.Component{
         }
       
         onClickExample = e => {
-            if (!this.state.hasData) {
+          
                 this.getData()
-            }
+            
             
            }
     onChangematrixA = (e) =>{

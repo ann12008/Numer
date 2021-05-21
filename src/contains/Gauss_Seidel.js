@@ -19,7 +19,7 @@ export default class Guass_seidel extends React.Component{
         { title: 'valueX', dataIndex: 'valuex' }],
         data: [],
         apiData: [],
-        hasData: false
+       
     }
 
    
@@ -27,7 +27,7 @@ export default class Guass_seidel extends React.Component{
         let tempData = null
         await apis.getMatrix().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+       
         // console.log(tempData)
         this.setState({
             n: this.state.apiData[1]["n"],
@@ -42,9 +42,9 @@ export default class Guass_seidel extends React.Component{
         })
     }
     onClickExample = e => {
-        if (!this.state.hasData) {
+       
             this.getData()
-        }
+       
           
        }
     onChangematrixA = (e) =>{

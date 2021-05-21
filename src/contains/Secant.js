@@ -7,6 +7,7 @@ import {calSecant} from '../calculator'
 
 
 export default class Secant extends React.Component {
+    
     state = {
         equation: '',
         x0: '',
@@ -21,14 +22,14 @@ export default class Secant extends React.Component {
         data: [],
       
         apiData: [],
-        hasData: false
+        
     }
 
     async getData() {
         let tempData = null
         await apis.getRootofequation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+        
         // console.log(tempData)
         this.setState({
             equation: this.state.apiData[4]["equation"],
@@ -40,9 +41,9 @@ export default class Secant extends React.Component {
     }
   
     onClickExample = e => {
-        if (!this.state.hasData) {
+        
             this.getData()
-        }
+      
      
     }
 

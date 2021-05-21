@@ -21,14 +21,14 @@ export default class Cramer_rule extends React.Component{
         data: [],
       
         apiData: [],
-        hasData: false
+       
     }
     
     async getData() {
         let tempData = null
         await apis.getMatrix().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+       
         // console.log(tempData)
         this.setState({
             n: this.state.apiData[0]["n"],
@@ -44,9 +44,9 @@ export default class Cramer_rule extends React.Component{
 
 
     onClickExample = e => {
-         if (!this.state.hasData) { 
+        
             this.getData()
-        }
+       
        
     }
 

@@ -17,18 +17,18 @@ export default class Spline extends React.Component{
           data : [],
         
           apiData: [],
-          hasData: false}
+         }
           async getData() {
             let tempData = null
             await apis.getMatrixInterpolation().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
-            this.setState({ hasData: true })
+          
             // console.log(tempData)
             this.setState({
                 n: this.state.apiData[3]["n"],
     
                 matrixA: copyArray(this.state.apiData[3]["n"], this.state.apiData[3]["matrixA"]),
-    
+                
     
     
                 valueX: this.state.apiData[3]["x"],
@@ -39,9 +39,9 @@ export default class Spline extends React.Component{
         }
   
     onClickExample = e => {
-        if (!this.state.hasData) {
+       
             this.getData()
-        }
+       
      
     }
     onChangeX = e => {

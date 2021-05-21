@@ -21,14 +21,14 @@ export default class linear_regression extends React.Component {
         data: [],
         
         apiData: [],
-        hasData: false,
+      
        
     }
     async getData() {
         let tempData = null
         await apis.getMatrixRegression().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+        
         // console.log(tempData)
         this.setState({
             n: this.state.apiData[0]["n"],
@@ -45,9 +45,9 @@ export default class linear_regression extends React.Component {
     }
    
     onClickExample = e => {
-        if (!this.state.hasData) {
+       
             this.getData()
-        }
+      
        
     }
     onChangeX = e => {

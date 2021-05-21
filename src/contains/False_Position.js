@@ -24,13 +24,13 @@ class False_Position extends React.Component {
         
       
         apiData: [],
-        hasData: false
+      
     }
     async getData() {
         let tempData = null
         await apis.getRootofequation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+       
         
         this.setState({
             equation: this.state.apiData[1]["equation"],
@@ -41,11 +41,11 @@ class False_Position extends React.Component {
         })
     }
    
-  
+   
     onClickExample = e =>{
-        if(!this.state.hasData){
+        
             this.getData()
-        }
+        
        
     }
 

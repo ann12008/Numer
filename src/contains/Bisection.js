@@ -24,7 +24,7 @@ class Bisection extends React.Component {
             data : [],
            
             apiData : [],
-            hasData : false
+           
         };
 
     async getData(){
@@ -32,7 +32,7 @@ class Bisection extends React.Component {
                 let tempData = null
                 await apis.getRootofequation().then(res => {tempData = res.data})
                 this.setState({apiData:tempData})
-                this.setState({hasData : true})
+              
                 console.log(this.state.apiData)
                 console.log(this.state.apiData[0])
                 
@@ -47,9 +47,9 @@ class Bisection extends React.Component {
             }   
             
     onClickExample = e =>{
-                    if(!this.state.hasData){
+                  
                         this.getData()
-                    }
+                    
                     
                   
                 
