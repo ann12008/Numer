@@ -5,49 +5,45 @@ import './matrix.css'
 import apis from '../API/index'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
-import {Modal_matrix} from '../components/Modal'
+
 import { calLu, copyArray } from '../calculator'
-const math = require('mathjs');
+
 
 export default class Lu_Decomposition extends React.Component{
 
-    state = {n : 2,
+    state = {
+        n : 2,
         matrixA : [[],[]],
         matrixB :[],
         colum : [{title : 'X', dataIndex : 'x'},
         {title : 'valueX' ,dataIndex : 'valuex'}] ,
         data : [], 
-        isModalVisible: false,
+       
         apiData: [],
-        hasData: false}
+        hasData: false
+    }
         async getData() {
             let tempData = null
             await apis.getMatrix().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
             this.setState({ hasData: true })
             // console.log(tempData)
+            this.setState({
+                n: this.state.apiData[0]["n"],
+    
+                matrixA: copyArray(this.state.apiData[0]["n"], this.state.apiData[0]["matrixA"]),
+    
+                matrixB: [...this.state.apiData[0]["matrixB"]],
+    
+                
+            })
         }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
-        this.setState({
-            n: this.state.apiData[index]["n"],
 
-            matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
-
-            matrixB: [...this.state.apiData[index]["matrixB"]],
-
-            isModalVisible: false
-        })
-    }
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
         }
-           this.setState({ isModalVisible: true })
+         
        }
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
@@ -90,13 +86,7 @@ export default class Lu_Decomposition extends React.Component{
     render(){
         return(
             <div>
-                <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Lu-Decomposition Method

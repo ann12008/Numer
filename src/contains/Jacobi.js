@@ -7,8 +7,7 @@ import InputB  from '../components/InputB'
 import apis from '../API/index'
 import './root_of_equation.css'
 import { calJacobi ,copyArray} from '../calculator'
-import {Modal_matrix} from '../components/Modal'
-const math = require('mathjs');
+
 
 
 export default class Jacobi extends React.Component{
@@ -19,7 +18,7 @@ export default class Jacobi extends React.Component{
         colum : [{title : 'X', dataIndex : 'x'},
         {title : 'valueX' ,dataIndex : 'valuex'}] ,
         data : [], 
-        isModalVisible: false,
+       
         apiData: [],
         hasData: false}
 
@@ -29,31 +28,25 @@ export default class Jacobi extends React.Component{
             this.setState({ apiData: tempData })
             this.setState({ hasData: true })
             // console.log(tempData)
+            this.setState({
+                n: this.state.apiData[1]["n"],
+    
+                matrixA: copyArray(this.state.apiData[1]["n"], this.state.apiData[1]["matrixA"]),
+    
+                matrixB: [...this.state.apiData[1]["matrixB"]],
+                
+                error : this.state.apiData[1]["error"],
+    
+                
+            })
         }
 
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
-        this.setState({
-            n: this.state.apiData[index]["n"],
 
-            matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
-
-            matrixB: [...this.state.apiData[index]["matrixB"]],
-            
-            error : this.state.apiData[index]["error"],
-
-            isModalVisible: false
-        })
-    }
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
         }
-           this.setState({ isModalVisible: true })
+          
        }    
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
@@ -103,13 +96,7 @@ export default class Jacobi extends React.Component{
     render(){
         return(
             <div>
-                <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Jacobi Iteration Method

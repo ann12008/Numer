@@ -69,7 +69,7 @@ class OnePoint extends React.Component {
             <div>
                
               
-                 <Row>
+                    <Row>
                          <Col   span = {24}  style = {{textAlign : 'center' , fontWeight : 'bold' ,fontSize : '20px'}}>
                               One-Point Iteration Method
                          </Col>

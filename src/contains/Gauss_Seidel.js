@@ -6,9 +6,8 @@ import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
 import apis from '../API/index'
 import { calSeidel ,copyArray} from '../calculator'
-import {Modal_matrix} from '../components/Modal'
 
-const math = require('mathjs');
+
 
 export default class Guass_seidel extends React.Component{
     state = {
@@ -18,30 +17,35 @@ export default class Guass_seidel extends React.Component{
         matrixB: [],
         colum: [{ title: 'X', dataIndex: 'x' },
         { title: 'valueX', dataIndex: 'valuex' }],
-        data: []
+        data: [],
+        apiData: [],
+        hasData: false
     }
 
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
+   
+    async getData() {
+        let tempData = null
+        await apis.getMatrix().then(res => { tempData = res.data })
+        this.setState({ apiData: tempData })
+        this.setState({ hasData: true })
+        // console.log(tempData)
         this.setState({
-            n: this.state.apiData[index]["n"],
+            n: this.state.apiData[1]["n"],
 
-            matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
+            matrixA: copyArray(this.state.apiData[1]["n"], this.state.apiData[1]["matrixA"]),
 
-            matrixB: [...this.state.apiData[index]["matrixB"]],
+            matrixB: [...this.state.apiData[1]["matrixB"]],
 
-            isModalVisible: false
+            error: this.state.apiData[1]["error"]
+
+            
         })
     }
     onClickExample = e => {
         if (!this.state.hasData) {
             this.getData()
         }
-           this.setState({ isModalVisible: true })
+          
        }
     onChangematrixA = (e) =>{
         let index = e.target.name.split(" ")
@@ -76,21 +80,11 @@ export default class Guass_seidel extends React.Component{
     onClickCalculator = (e)=>{
         
             this.setState({data : calSeidel(this.state.n,this.state.matrixA,this.state.matrixB,this.state.error)})
-       
-            
-           
-       
     }
     render(){
         return(
             <div>
-                <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Gauss-Seidel Iteration Method
@@ -121,7 +115,7 @@ export default class Guass_seidel extends React.Component{
                 </Row>
                 <Row style = {{ width : '100px',padding : '0px 40px'  }}>
                             <div>
-                            <Input  style = {{width : '150px' }} placeholder = 'Example = 0.00001' onChange = {this.onChangeError}/>
+                            <Input  style = {{width : '150px' }} placeholder = 'Example = 0.00001' value = {this.state.error} onChange = {this.onChangeError}/>
                             </div>
                  
                            

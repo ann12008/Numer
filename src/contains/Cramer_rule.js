@@ -5,7 +5,7 @@ import './matrix.css'
 import apis from '../API/index'
 import Inputmatrix  from '../components/Inputmatrix'
 import InputB  from '../components/InputB'
-import {Modal_matrix} from '../components/Modal'
+
 
 import { calCramer , copyArray } from '../calculator'
 
@@ -19,7 +19,7 @@ export default class Cramer_rule extends React.Component{
         colum: [{title: 'X',dataIndex: 'x'},
         {title: 'ValueX',dataIndex: 'valuex'}],
         data: [],
-        isModalVisible: false,
+      
         apiData: [],
         hasData: false
     }
@@ -30,30 +30,24 @@ export default class Cramer_rule extends React.Component{
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
         this.setState({
-            n: this.state.apiData[index]["n"],
+            n: this.state.apiData[0]["n"],
           
 
-             matrixA: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+             matrixA: copyArray(this.state.apiData[0]["n"],this.state.apiData[0]["matrixA"]),
 
-            matrixB: [...this.state.apiData[index]["matrixB"]],
+            matrixB: [...this.state.apiData[0]["matrixB"]],
             
-            isModalVisible: false
+           
         })
     }
+
 
     onClickExample = e => {
          if (!this.state.hasData) { 
             this.getData()
         }
-        this.setState({ isModalVisible: true })
+       
     }
 
     onChangematrixA = (e) =>{
@@ -97,13 +91,7 @@ export default class Cramer_rule extends React.Component{
     render(){
         return(
             <div>
-                 <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Cramer's Rule

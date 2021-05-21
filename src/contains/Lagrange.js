@@ -5,9 +5,7 @@ import './matrix.css'
 import InputXY  from '../components/InputXY'
 import {calLagrange ,copyArray} from '../calculator'
 import apis from '../API/index'
-import {Modal_matrix} from '../components/Modal'
 
-const math = require('mathjs');
 
 export default class Lagrange extends React.Component{
     state = {n : 2, 
@@ -17,41 +15,36 @@ export default class Lagrange extends React.Component{
         colum : [{title : 'fX', dataIndex : 'fx'},
         {title : 'valueX' ,dataIndex : 'valuex'}] ,
         data : [],
-        isModalVisible: false,
+      
         apiData: [],
-        hasData: false}
+        hasData: false
+       }
         async getData() {
             let tempData = null
             await apis.getMatrixInterpolation().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
             this.setState({ hasData: true })
             // console.log(tempData)
-        }
-        onClickOk = e => {
-            this.setState({ isModalVisible: false })
-        }
-        onClickInsert = e => {
-            let index = e.currentTarget.getAttribute('name').split('_')
-            index = parseInt(index[1])
             this.setState({
-                n: this.state.apiData[index]["n"],
+                n: this.state.apiData[1]["n"],
     
-                matrixA: copyArray(this.state.apiData[index]["n"], this.state.apiData[index]["matrixA"]),
+                matrixA: copyArray(this.state.apiData[1]["n"], this.state.apiData[1]["matrixA"]),
                 
-                Point : [...this.state.apiData[index]["point"]],
+                Point : [...this.state.apiData[1]["point"]],
 
-                valueX : this.state.apiData[index]["x"],
+                valueX : this.state.apiData[1]["x"],
                 
                 
-                isModalVisible: false
+                
             })
-            console.log(this.state.valueX)
         }
+
+
         onClickExample = e => {
             if (!this.state.hasData) {
                 this.getData()
             }
-               this.setState({ isModalVisible: true })
+               
            }
     onChangeX = e => {
             this.setState({valueX : e.target.value})
@@ -98,13 +91,7 @@ export default class Lagrange extends React.Component{
     render(){
         return(
             <div>
-                 <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+                
                  <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                                     Lagrange polynomials
