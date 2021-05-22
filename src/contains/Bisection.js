@@ -33,8 +33,7 @@ class Bisection extends React.Component {
                 await apis.getRootofequation().then(res => {tempData = res.data})
                 this.setState({apiData:tempData})
               
-                console.log(this.state.apiData)
-                console.log(this.state.apiData[0])
+              
                 
                 this.setState({
                     equation: this.state.apiData[0]["equation"],

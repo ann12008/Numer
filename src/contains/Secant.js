@@ -30,7 +30,7 @@ export default class Secant extends React.Component {
         await apis.getRootofequation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         
-        // console.log(tempData)
+        
         this.setState({
             equation: this.state.apiData[4]["equation"],
             x0: this.state.apiData[4]["xl"],

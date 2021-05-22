@@ -29,7 +29,7 @@ export default class linear_regression extends React.Component {
         await apis.getMatrixRegression().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         
-        // console.log(tempData)
+       
         this.setState({
             n: this.state.apiData[0]["n"],
 

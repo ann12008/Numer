@@ -27,7 +27,7 @@ export default class Conjugate extends React.Component{
             await apis.getMatrix().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
            
-            // console.log(tempData)
+           
 
             this.setState({
                 n: this.state.apiData[1]["n"],

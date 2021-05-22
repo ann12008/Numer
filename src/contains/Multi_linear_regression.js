@@ -28,7 +28,7 @@ export default class Multi_linear_regression extends React.Component{
             await apis.getMatrixRegression().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
            
-            // console.log(tempData)
+            
             this.setState({
                 n: this.state.apiData[2]["n"],
     

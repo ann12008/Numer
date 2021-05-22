@@ -26,12 +26,12 @@ export default class Gauss_Jordan extends React.Component{
             await apis.getMatrix().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
            
-            // console.log(tempData)
+            
             this.setState({
                 n: this.state.apiData[0]["n"],
-    
+                
                 matrixA: copyArray(this.state.apiData[0]["n"], this.state.apiData[0]["matrixA"]),
-    
+                
                 matrixB: [...this.state.apiData[0]["matrixB"]],
 
                 

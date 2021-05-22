@@ -4,7 +4,7 @@ export default class Inputmatrix extends React.Component{
 
     
     showInput(){
-         console.log("B")
+         
         let arrRow = []
         for(let i = 0 ; i < this.props.n ; i++){
             let arrCol = [] 
