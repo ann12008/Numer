@@ -338,7 +338,7 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
 export function calElimination(n, initialMatrix1, initialMatrix2) {
 
     let matrix1=copyArray(n,initialMatrix1)  
-    let matrix2=copyArray(n,initialMatrix2)  
+    let matrix2=[...initialMatrix2]  
     
     
     
@@ -385,7 +385,7 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
 export function calJordan(n, initialMatrix1, initialMatrix2) {
 
     let matrix1=copyArray(n,initialMatrix1)  
-    let matrix2=copyArray(n,initialMatrix2) 
+    let matrix2=[...initialMatrix2]   
     
     
     
@@ -443,7 +443,7 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
 export function calLu(n, initialMatrix1, initialMatrix2) {
 
     let A = copyArray(n,initialMatrix1) 
-    let B = copyArray(n,initialMatrix2) 
+    let B =  [...initialMatrix2]
 
    
    
@@ -543,7 +543,7 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
     let matrix1=copyArray(n,initialMatrix1)
-    let matrix2=copyArray(n,initialMatrix2)
+    let matrix2= [...initialMatrix2]
     
     let error = initialError
 
@@ -616,7 +616,7 @@ export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
     let matrix1=copyArray(n,initialMatrix1)
-    let matrix2=copyArray(n,initialMatrix2)
+    let matrix2=[...initialMatrix2]
     
     let error = initialError
 
